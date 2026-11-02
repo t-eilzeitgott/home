@@ -1,0 +1,113 @@
+{
+  "lang": "en",
+  "path": "en/",
+  "otherLang": "de",
+  "otherPath": "",
+  "otherLabel": "Deutsch",
+  "title": "Jerome Ceric – Software Engineer | talfahrt",
+  "description": "Jerome Ceric, software engineer based near Wuppertal, Germany: Java and Spring Boot, .NET, web apps with React, Supabase and WebGL. Projects, software solutions for companies, and contact.",
+  "jobTitle": "Software Engineer",
+  "skip": "Skip to content",
+  "nav": {
+    "projects": "Projects",
+    "services": "Services",
+    "profile": "Profile",
+    "contact": "Contact",
+    "menu": "Menu",
+    "palette": "Search and commands"
+  },
+  "hero": {
+    "name": "Jerome Ceric",
+    "role": "Software Engineer",
+    "lede": "I build software that feels light: web apps for the phone, backends in Java and Spring Boot, and integrations that just run.",
+    "primary": "See projects",
+    "secondary": "Get in touch"
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "My own web apps, live on talfahrt.dev – designed, built and shipped with AI tools.",
+    "open": "Open",
+    "items": {
+      "gruppetto": {
+        "tagline": "Grand Tour prediction game",
+        "description": "Prediction game for the Giro, Tour de France and Vuelta: stage picks, bonus scoring, a live table – and 3D mini games in between. Mobile first, installable from the home screen.",
+        "stack": "React, TypeScript, Supabase, WebGL"
+      },
+      "rosenherz": {
+        "tagline": "Castle-building game for iPhone",
+        "description": "Clara and Mia inherit Rosenherz Castle and turn it back into a home, room by room. Every room is a 3D dollhouse, every graphic drawn in code, playable offline.",
+        "stack": "JavaScript, Three.js, PWA"
+      },
+      "neontd": {
+        "tagline": "Neon-style tower defense",
+        "description": "8 worlds, 48 hand-built tracks, a weekly arena with a global leaderboard. The game logic is written in Java and runs on iPhone, in the browser and as a desktop app.",
+        "stack": "Java, WebGL, Supabase"
+      }
+    }
+  },
+  "services": {
+    "title": "Software solutions",
+    "intro": "What I build for companies and teams.",
+    "items": [
+      {
+        "title": "Web apps that feel like apps",
+        "text": "Fast, offline-capable, launched from the home screen – no app store, no bloat. Made for the phone, good on the desktop."
+      },
+      {
+        "title": "Backend and data",
+        "text": "Spring Boot, PostgreSQL, Supabase. Clear interfaces, data models you can follow, and permissions that hold."
+      },
+      {
+        "title": "Integration and interfaces",
+        "text": "ERP connections, e-invoicing and reporting obligations, data imports that run by themselves at night and tell you in the morning if something is missing."
+      },
+      {
+        "title": "Modernisation",
+        "text": "From COBOL, Delphi or SVN to Java, .NET and Git – step by step, without stopping the business."
+      }
+    ]
+  },
+  "profile": {
+    "title": "Profile",
+    "intro": "Jerome Ceric is a software engineer based near Wuppertal, Germany. He builds enterprise software – back-office systems in Java and Spring Boot, integrations with ERP and invoicing systems – and his own web apps with React, Supabase and WebGL.",
+    "facts": [
+      { "label": "Name", "value": "Jerome Ceric" },
+      { "label": "Role", "value": "Software Engineer" },
+      { "label": "Location", "value": "Wuppertal area, Germany – remote" },
+      { "label": "Focus", "value": "Java, Spring Boot, PostgreSQL, .NET, TypeScript, React, Supabase, WebGL" },
+      { "label": "Also", "value": "COBOL, Delphi, Git migrations, e-invoicing (e.g. KSeF), ERP integration (Dynamics 365)" },
+      { "label": "Languages", "value": "German, English" }
+    ]
+  },
+  "contact": {
+    "title": "Let's talk.",
+    "text": "For projects, enquiries and everything in between.",
+    "write": "Write an email",
+    "copy": "Copy address",
+    "copied": "Copied"
+  },
+  "footer": {
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "rights": "All rights reserved."
+  },
+  "palette": {
+    "placeholder": "Where to?",
+    "empty": "Nothing found.",
+    "hint": "Open with ⌘K or /",
+    "groups": { "pages": "Page", "projects": "Projects", "actions": "Actions" },
+    "items": {
+      "top": "Back to top",
+      "lang": "Auf Deutsch wechseln",
+      "theme": "Light or dark",
+      "copy": "Copy email address",
+      "mail": "Write an email",
+      "imprint": "Open imprint"
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This path leads nowhere. The apps live on their own addresses, everything else starts on the home page.",
+    "back": "Back to the home page"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "origin": "https://talfahrt.dev",
+  "brand": "talfahrt",
+  "owner": {
+    "name": "Jerome Ceric",
+    "givenName": "Jerome",
+    "familyName": "Ceric",
+    "locality": "Wuppertal",
+    "region": "Nordrhein-Westfalen",
+    "country": "DE"
+  },
+  "email": "hallo@talfahrt.dev",
+  "links": [
+    { "id": "linkedin", "label": "LinkedIn", "url": "" }
+  ],
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "PostgreSQL",
+    "Supabase",
+    ".NET",
+    "TypeScript",
+    "React",
+    "WebGL",
+    "Three.js",
+    "COBOL",
+    "Delphi",
+    "Git",
+    "E-Invoicing",
+    "ERP Integration"
+  ],
+  "projects": [
+    {
+      "id": "gruppetto",
+      "name": "gruppetto",
+      "host": "gruppetto.talfahrt.dev",
+      "url": "https://gruppetto.talfahrt.dev/",
+      "icon": "projects/gruppetto.svg",
+      "category": "GameApplication",
+      "os": "iOS, Android, Web",
+      "since": "2026"
+    },
+    {
+      "id": "rosenherz",
+      "name": "Rosenherz",
+      "host": "rosenherz.talfahrt.dev",
+      "url": "https://rosenherz.talfahrt.dev/",
+      "icon": "projects/rosenherz.webp",
+      "category": "GameApplication",
+      "os": "iOS, Web",
+      "since": "2026"
+    },
+    {
+      "id": "neontd",
+      "name": "Neon TD",
+      "host": "td.talfahrt.dev",
+      "url": "https://td.talfahrt.dev/",
+      "icon": "projects/neontd.webp",
+      "category": "GameApplication",
+      "os": "iOS, Android, Web, Windows, macOS, Linux",
+      "since": "2026"
+    }
+  ],
+  "imprint": {
+    "street": "[Straße und Hausnummer]",
+    "city": "[PLZ Ort]"
+  }
+}

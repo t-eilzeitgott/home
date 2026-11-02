@@ -1,0 +1,127 @@
+{
+  "lang": "de",
+  "path": "",
+  "otherLang": "en",
+  "otherPath": "en/",
+  "otherLabel": "English",
+  "title": "Jerome Ceric – Software Engineer | talfahrt",
+  "description": "Jerome Ceric, Software Engineer aus dem Raum Wuppertal: Java und Spring Boot, .NET, Web-Apps mit React, Supabase und WebGL. Eigene Projekte, Softwarelösungen für Unternehmen und Kontakt.",
+  "jobTitle": "Softwareentwickler",
+  "skip": "Zum Inhalt",
+  "nav": {
+    "projects": "Projekte",
+    "services": "Leistungen",
+    "profile": "Profil",
+    "contact": "Kontakt",
+    "menu": "Menü",
+    "palette": "Suche und Befehle"
+  },
+  "hero": {
+    "name": "Jerome Ceric",
+    "role": "Software Engineer",
+    "lede": "Ich baue Software, die sich leicht anfühlt: Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen, die einfach laufen.",
+    "primary": "Projekte ansehen",
+    "secondary": "Schreib mir"
+  },
+  "projects": {
+    "title": "Projekte",
+    "intro": "Eigene Web-Apps, live unter talfahrt.dev – mit KI-Werkzeugen entworfen, gebaut und ausgeliefert.",
+    "open": "Öffnen",
+    "items": {
+      "gruppetto": {
+        "tagline": "Grand-Tour-Tippspiel",
+        "description": "Tippspiel für Giro, Tour de France und Vuelta: Etappentipps, Bonuswertungen, Live-Tabelle – und 3D-Minispiele zwischendurch. Mobile first, als Web-App vom Home-Bildschirm.",
+        "stack": "React, TypeScript, Supabase, WebGL"
+      },
+      "rosenherz": {
+        "tagline": "Aufbauspiel fürs iPhone",
+        "description": "Clara und Mia erben Schloss Rosenherz und machen es Raum für Raum wieder zum Zuhause. Jeder Raum ein 3D-Puppenhaus, jede Grafik in Code gezeichnet, offline spielbar.",
+        "stack": "JavaScript, Three.js, PWA"
+      },
+      "neontd": {
+        "tagline": "Tower Defense im Neon-Look",
+        "description": "8 Welten, 48 handgebaute Strecken, wöchentliche Arena mit weltweiter Rangliste. Die Spiellogik in Java – läuft auf dem iPhone, im Browser und als Desktop-App.",
+        "stack": "Java, WebGL, Supabase"
+      }
+    }
+  },
+  "services": {
+    "title": "Softwarelösungen",
+    "intro": "Was ich für Unternehmen und Teams baue.",
+    "items": [
+      {
+        "title": "Web-Apps, die sich wie Apps anfühlen",
+        "text": "Schnell, offline-fähig, vom Home-Bildschirm startbar – ohne App-Store und ohne Ballast. Gedacht fürs Handy, gut am Rechner."
+      },
+      {
+        "title": "Backend und Daten",
+        "text": "Spring Boot, PostgreSQL, Supabase. Klare Schnittstellen, nachvollziehbare Datenmodelle und Rechte, die stimmen."
+      },
+      {
+        "title": "Integration und Schnittstellen",
+        "text": "ERP-Anbindungen, E-Rechnung und Meldepflichten, Datenimporte, die nachts von allein laufen und morgens Bescheid sagen, wenn etwas fehlt."
+      },
+      {
+        "title": "Modernisierung",
+        "text": "Von Cobol, Delphi oder SVN zu Java, .NET und Git – schrittweise, ohne Stillstand im Betrieb."
+      }
+    ]
+  },
+  "profile": {
+    "title": "Profil",
+    "intro": "Jerome Ceric ist Softwareentwickler aus dem Raum Wuppertal. Er entwickelt Unternehmenssoftware – Backoffice-Systeme in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen – und eigene Web-Apps mit React, Supabase und WebGL.",
+    "facts": [
+      { "label": "Name", "value": "Jerome Ceric" },
+      { "label": "Rolle", "value": "Software Engineer, Softwareentwickler" },
+      { "label": "Standort", "value": "Raum Wuppertal, Bergisches Land – remote" },
+      { "label": "Schwerpunkte", "value": "Java, Spring Boot, PostgreSQL, .NET, TypeScript, React, Supabase, WebGL" },
+      { "label": "Außerdem", "value": "Cobol, Delphi, Git-Migrationen, E-Rechnung (z. B. KSeF), ERP-Anbindung (Dynamics 365)" },
+      { "label": "Sprachen", "value": "Deutsch, Englisch" }
+    ]
+  },
+  "contact": {
+    "title": "Lass uns reden.",
+    "text": "Für Projekte, Anfragen und alles dazwischen.",
+    "write": "E-Mail schreiben",
+    "copy": "Adresse kopieren",
+    "copied": "Kopiert"
+  },
+  "footer": {
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "palette": {
+    "placeholder": "Wohin?",
+    "empty": "Nichts gefunden.",
+    "hint": "Öffnen mit ⌘K oder /",
+    "groups": { "pages": "Seite", "projects": "Projekte", "actions": "Aktionen" },
+    "items": {
+      "top": "Nach oben",
+      "lang": "Switch to English",
+      "theme": "Hell oder dunkel",
+      "copy": "E-Mail-Adresse kopieren",
+      "mail": "E-Mail schreiben",
+      "imprint": "Impressum öffnen"
+    }
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "text": "Hier geht es nicht weiter. Die Apps erreichst du über ihre eigenen Adressen, alles andere über die Startseite.",
+    "back": "Zur Startseite"
+  },
+  "imprint": {
+    "title": "Impressum",
+    "metaTitle": "Impressum | talfahrt",
+    "law": "Angaben gemäß § 5 DDG",
+    "responsible": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+    "contactLabel": "Kontakt",
+    "privacyTitle": "Datenschutz",
+    "privacy": [
+      "Diese Website wird bei GitHub Pages gehostet (GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA). Beim Aufruf verarbeitet GitHub technisch notwendige Verbindungsdaten wie die IP-Adresse in Server-Logs, um die Seite auszuliefern und den Betrieb abzusichern. Einzelheiten stehen in der Datenschutzerklärung von GitHub.",
+      "Die Seite setzt keine Cookies, nutzt keine Analyse- oder Werbedienste und bindet keine Inhalte von Drittanbietern ein. Die Wahl von Sprache und Farbschema wird nur lokal im Browser gespeichert (localStorage) und nicht übertragen.",
+      "Wer per E-Mail Kontakt aufnimmt, dessen Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und nicht weitergegeben.",
+      "Betroffene haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung ihrer personenbezogenen Daten sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde."
+    ]
+  }
+}
