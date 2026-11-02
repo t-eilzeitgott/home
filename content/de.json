@@ -5,7 +5,7 @@
   "otherPath": "en/",
   "otherLabel": "English",
   "title": "talfahrt – Software Engineering, Web-Apps und Backends",
-  "description": "talfahrt: Software Engineering aus dem Raum Wuppertal. Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen. Projekte, Leistungen und Kontakt.",
+  "description": "talfahrt: Softwareentwicklung aus dem Raum Wuppertal. Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen. Projekte, Leistungen und Kontakt.",
   "skip": "Zum Inhalt",
   "nav": {
     "projects": "Projekte",
@@ -45,7 +45,7 @@
   },
   "services": {
     "title": "Softwarelösungen",
-    "intro": "Was talfahrt für Unternehmen und Teams baut.",
+    "intro": "Softwareentwicklung für Unternehmen und Teams – projektweise oder laufend, remote.",
     "items": [
       {
         "title": "Web-Apps, die sich wie Apps anfühlen",
@@ -67,7 +67,7 @@
   },
   "profile": {
     "title": "Über talfahrt",
-    "intro": "talfahrt ist ein Software-Studio aus dem Raum Wuppertal. Hier entstehen Backoffice-Systeme in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen und eigene Web-Apps mit React, Supabase und WebGL – alles aus einer Hand.",
+    "intro": "talfahrt ist ein Software-Studio aus dem Raum Wuppertal: ein Softwareentwickler, alles aus einer Hand. Hier entstehen Backoffice-Systeme in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen und eigene Web-Apps mit React, Supabase und WebGL.",
     "facts": [
       {
         "label": "Standort",

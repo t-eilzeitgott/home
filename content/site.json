@@ -8,7 +8,11 @@
   },
   "email": "hallo@talfahrt.dev",
   "links": [
-    { "id": "linkedin", "label": "LinkedIn", "url": "" }
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://de.linkedin.com/in/jerome-ceric-03757b20a"
+    }
   ],
   "skills": [
     "Java",

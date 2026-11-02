@@ -5,7 +5,7 @@
   "otherPath": "",
   "otherLabel": "Deutsch",
   "title": "talfahrt – software engineering, web apps and backends",
-  "description": "talfahrt: software engineering from the Wuppertal area, Germany. Web apps for the phone, backends in Java and Spring Boot, integrations with ERP and invoicing systems. Projects, services and contact.",
+  "description": "talfahrt: software development from the Wuppertal area, Germany. Web apps for the phone, backends in Java and Spring Boot, integrations with ERP and invoicing systems. Projects, services and contact.",
   "skip": "Skip to content",
   "nav": {
     "projects": "Projects",
@@ -45,7 +45,7 @@
   },
   "services": {
     "title": "Software solutions",
-    "intro": "What talfahrt builds for companies and teams.",
+    "intro": "Software development for companies and teams – per project or ongoing, remote.",
     "items": [
       {
         "title": "Web apps that feel like apps",
@@ -67,7 +67,7 @@
   },
   "profile": {
     "title": "About talfahrt",
-    "intro": "talfahrt is a software studio based near Wuppertal, Germany. It builds back-office systems in Java and Spring Boot, integrations with ERP and invoicing systems, and its own web apps with React, Supabase and WebGL – all from one pair of hands.",
+    "intro": "talfahrt is a software studio near Wuppertal, Germany: one software developer, everything from one pair of hands. It builds back-office systems in Java and Spring Boot, integrations with ERP and invoicing systems, and its own web apps with React, Supabase and WebGL.",
     "facts": [
       {
         "label": "Location",
