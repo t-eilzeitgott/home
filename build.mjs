@@ -87,9 +87,9 @@ function llms(site, en, de) {
   const services = en.services.items.map((s) => `- ${s.title}: ${s.text}`).join('\n');
   const facts = en.profile.facts.map((f) => `- ${f.label}: ${f.value}`).join('\n');
   const links = site.links.filter((l) => l.url).map((l) => `- ${l.label}: ${l.url}`).join('\n');
-  return `# ${site.brand} – ${site.owner.name}
+  return `# ${site.brand}
 
-> ${en.profile.intro} ${site.brand}.dev is his home on the web; his apps run on subdomains of it.
+> ${en.profile.intro} ${site.brand}.dev is the home of the studio; its apps run on subdomains of it.
 
 ## About
 

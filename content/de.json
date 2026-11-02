@@ -4,24 +4,22 @@
   "otherLang": "en",
   "otherPath": "en/",
   "otherLabel": "English",
-  "title": "Jerome Ceric – Software Engineer | talfahrt",
-  "description": "Jerome Ceric, Software Engineer aus dem Raum Wuppertal: Java und Spring Boot, .NET, Web-Apps mit React, Supabase und WebGL. Eigene Projekte, Softwarelösungen für Unternehmen und Kontakt.",
-  "jobTitle": "Softwareentwickler",
+  "title": "talfahrt – Software Engineering, Web-Apps und Backends",
+  "description": "talfahrt: Software Engineering aus dem Raum Wuppertal. Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen. Projekte, Leistungen und Kontakt.",
   "skip": "Zum Inhalt",
   "nav": {
     "projects": "Projekte",
     "services": "Leistungen",
-    "profile": "Profil",
+    "profile": "Über",
     "contact": "Kontakt",
     "menu": "Menü",
     "palette": "Suche und Befehle"
   },
   "hero": {
-    "name": "Jerome Ceric",
-    "role": "Software Engineer",
-    "lede": "Ich baue Software, die sich leicht anfühlt: Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen, die einfach laufen.",
+    "claim": "Software Engineering aus dem Bergischen Land",
+    "lede": "Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen, die einfach laufen – Software, die sich leicht anfühlt.",
     "primary": "Projekte ansehen",
-    "secondary": "Schreib mir"
+    "secondary": "Schreib uns"
   },
   "projects": {
     "title": "Projekte",
@@ -47,7 +45,7 @@
   },
   "services": {
     "title": "Softwarelösungen",
-    "intro": "Was ich für Unternehmen und Teams baue.",
+    "intro": "Was talfahrt für Unternehmen und Teams baut.",
     "items": [
       {
         "title": "Web-Apps, die sich wie Apps anfühlen",
@@ -68,15 +66,25 @@
     ]
   },
   "profile": {
-    "title": "Profil",
-    "intro": "Jerome Ceric ist Softwareentwickler aus dem Raum Wuppertal. Er entwickelt Unternehmenssoftware – Backoffice-Systeme in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen – und eigene Web-Apps mit React, Supabase und WebGL.",
+    "title": "Über talfahrt",
+    "intro": "talfahrt ist ein Software-Studio aus dem Raum Wuppertal. Hier entstehen Backoffice-Systeme in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen und eigene Web-Apps mit React, Supabase und WebGL – alles aus einer Hand.",
     "facts": [
-      { "label": "Name", "value": "Jerome Ceric" },
-      { "label": "Rolle", "value": "Software Engineer, Softwareentwickler" },
-      { "label": "Standort", "value": "Raum Wuppertal, Bergisches Land – remote" },
-      { "label": "Schwerpunkte", "value": "Java, Spring Boot, PostgreSQL, .NET, TypeScript, React, Supabase, WebGL" },
-      { "label": "Außerdem", "value": "Cobol, Delphi, Git-Migrationen, E-Rechnung (z. B. KSeF), ERP-Anbindung (Dynamics 365)" },
-      { "label": "Sprachen", "value": "Deutsch, Englisch" }
+      {
+        "label": "Standort",
+        "value": "Raum Wuppertal, Bergisches Land – remote"
+      },
+      {
+        "label": "Schwerpunkte",
+        "value": "Java, Spring Boot, PostgreSQL, .NET, TypeScript, React, Supabase, WebGL"
+      },
+      {
+        "label": "Außerdem",
+        "value": "Cobol, Delphi, Git-Migrationen, E-Rechnung (z. B. KSeF), ERP-Anbindung (Dynamics 365)"
+      },
+      {
+        "label": "Sprachen",
+        "value": "Deutsch, Englisch"
+      }
     ]
   },
   "contact": {
@@ -95,7 +103,11 @@
     "placeholder": "Wohin?",
     "empty": "Nichts gefunden.",
     "hint": "Öffnen mit ⌘K oder /",
-    "groups": { "pages": "Seite", "projects": "Projekte", "actions": "Aktionen" },
+    "groups": {
+      "pages": "Seite",
+      "projects": "Projekte",
+      "actions": "Aktionen"
+    },
     "items": {
       "top": "Nach oben",
       "lang": "Switch to English",
@@ -122,6 +134,7 @@
       "Die Seite setzt keine Cookies, nutzt keine Analyse- oder Werbedienste und bindet keine Inhalte von Drittanbietern ein. Die Wahl von Sprache und Farbschema wird nur lokal im Browser gespeichert (localStorage) und nicht übertragen.",
       "Wer per E-Mail Kontakt aufnimmt, dessen Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und nicht weitergegeben.",
       "Betroffene haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung ihrer personenbezogenen Daten sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde."
-    ]
+    ],
+    "description": "Impressum und Datenschutz von talfahrt.dev."
   }
 }

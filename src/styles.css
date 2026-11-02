@@ -275,23 +275,18 @@ html.no-intro .intro { display: none; }
   margin-left: -.04em;
 }
 html:not(.no-intro):not(.landed) .hero__mark { opacity: 0; }
-.hero__body { margin-top: clamp(20px, 3vh, 32px); max-width: 60ch; }
+.hero__body { margin-top: clamp(20px, 3vh, 32px); max-width: 68ch; }
 html:not(.no-intro) .hero__body { opacity: 0; }
 html.landed .hero__body, html.no-intro .hero__body { opacity: 1; animation: rise .7s var(--ease) both; }
 html.no-intro .hero__body { animation: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-.hero__who {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  align-items: baseline;
+.hero__claim {
   font-family: var(--font-display);
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(22px, 2.6vw, 32px);
   font-weight: 650;
   letter-spacing: -.025em;
-  line-height: 1.15;
+  line-height: 1.2;
 }
-.hero__who span { color: var(--muted); font-weight: 500; }
 .hero__lede {
   margin-top: 14px;
   font-size: clamp(17px, 1.5vw, 20px);

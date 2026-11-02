@@ -1,10 +1,7 @@
 {
   "origin": "https://talfahrt.dev",
   "brand": "talfahrt",
-  "owner": {
-    "name": "Jerome Ceric",
-    "givenName": "Jerome",
-    "familyName": "Ceric",
+  "location": {
     "locality": "Wuppertal",
     "region": "Nordrhein-Westfalen",
     "country": "DE"
@@ -62,6 +59,7 @@
     }
   ],
   "imprint": {
+    "name": "Jerome Ceric",
     "street": "[Straße und Hausnummer]",
     "city": "[PLZ Ort]"
   }

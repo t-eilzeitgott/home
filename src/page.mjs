@@ -27,7 +27,6 @@ function boot(ctx) {
 function structuredData(ctx, page) {
   const { site, t } = ctx;
   const origin = site.origin;
-  const person = `${origin}/#person`;
   const org = `${origin}/#org`;
   const website = `${origin}/#website`;
   const sameAs = site.links.filter((l) => l.url).map((l) => l.url);
@@ -48,27 +47,7 @@ function structuredData(ctx, page) {
       description: page.description,
       inLanguage: t.lang,
       isPartOf: { '@id': website },
-      about: { '@id': person }
-    },
-    {
-      '@type': 'Person',
-      '@id': person,
-      name: site.owner.name,
-      givenName: site.owner.givenName,
-      familyName: site.owner.familyName,
-      jobTitle: t.jobTitle,
-      description: t.profile.intro,
-      url: `${origin}/`,
-      email: `mailto:${site.email}`,
-      knowsAbout: site.skills,
-      knowsLanguage: ['de', 'en'],
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: site.owner.locality,
-        addressRegion: site.owner.region,
-        addressCountry: site.owner.country
-      },
-      ...(sameAs.length ? { sameAs } : {})
+      about: { '@id': org }
     },
     {
       '@type': 'Organization',
@@ -76,8 +55,17 @@ function structuredData(ctx, page) {
       name: site.brand,
       url: `${origin}/`,
       logo: `${origin}/icons/icon-512.png`,
+      description: t.profile.intro,
       email: site.email,
-      founder: { '@id': person }
+      knowsAbout: site.skills,
+      knowsLanguage: ['de', 'en'],
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: site.location.locality,
+        addressRegion: site.location.region,
+        addressCountry: site.location.country
+      },
+      ...(sameAs.length ? { sameAs } : {})
     },
     ...site.projects.map((p) => ({
       '@type': 'SoftwareApplication',
@@ -86,7 +74,7 @@ function structuredData(ctx, page) {
       applicationCategory: p.category,
       operatingSystem: p.os,
       description: t.projects.items[p.id].description,
-      author: { '@id': person },
+      author: { '@id': org },
       publisher: { '@id': org }
     }))
   ];
@@ -109,14 +97,14 @@ function head(ctx, page) {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
-<meta name="author" content="${esc(site.owner.name)}">
+<meta name="author" content="${esc(site.brand)}">
 <meta name="robots" content="${page.index ? 'index, follow, max-image-preview:large, max-snippet:-1' : 'noindex, follow'}">
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark light">
 <link rel="canonical" href="${page.url}">
 ${hreflang}
 ${me}
-<meta property="og:type" content="${page.kind === 'home' ? 'profile' : 'website'}">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.brand)}">
 <meta property="og:title" content="${esc(page.title)}">
 <meta property="og:description" content="${esc(page.description)}">
@@ -124,11 +112,9 @@ ${me}
 <meta property="og:image" content="${origin}/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="talfahrt – ${esc(site.owner.name)}">
+<meta property="og:image:alt" content="${esc(site.brand)}">
 <meta property="og:locale" content="${page.lang === 'de' ? 'de_DE' : 'en_US'}">
 <meta property="og:locale:alternate" content="${page.lang === 'de' ? 'en_US' : 'de_DE'}">
-${page.kind === 'home' ? `<meta property="profile:first_name" content="${esc(site.owner.givenName)}">
-<meta property="profile:last_name" content="${esc(site.owner.familyName)}">` : ''}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(page.title)}">
 <meta name="twitter:description" content="${esc(page.description)}">
@@ -180,7 +166,7 @@ function hero(ctx) {
 <div class="wrap hero__inner">
 <p class="hero__mark wordmark" id="heroMark" aria-label="talfahrt">talfahrt<span class="wordmark__dot">.</span></p>
 <div class="hero__body">
-<h1 class="hero__who">${esc(t.hero.name)} <span>${esc(t.hero.role)}</span></h1>
+<h1 class="hero__claim">${esc(t.hero.claim)}</h1>
 <p class="hero__lede">${esc(t.hero.lede)}</p>
 <div class="hero__cta">
 <a class="btn btn--primary" href="#projects">${esc(t.hero.primary)}</a>
@@ -280,7 +266,7 @@ function footer(ctx) {
   const otherHref = `${root}${t.otherPath}`;
   return `<footer class="foot">
 <div class="wrap">
-<p class="foot__meta">© ${year} ${esc(site.brand)} – ${esc(site.owner.name)}</p>
+<p class="foot__meta">© ${year} ${esc(site.brand)}</p>
 <div class="foot__links">
 <a href="${root}impressum/">${esc(t.footer.imprint)}</a>
 <a href="${root}impressum/#datenschutz">${esc(t.footer.privacy)}</a>
@@ -370,7 +356,7 @@ export function renderImprint(ctx) {
     kind: 'imprint',
     lang: 'de',
     title: im.metaTitle,
-    description: `${im.title} und ${im.privacyTitle} von talfahrt.dev – ${site.owner.name}.`,
+    description: im.description,
     url: `${site.origin}/impressum/`,
     index: true,
     alternates: false
@@ -386,9 +372,9 @@ ${header(ctx, true)}
 <h1 class="page__title">${esc(im.title)}</h1>
 <div class="page__body">
 <p class="muted">${esc(im.law)}</p>
-<address>${esc(site.owner.name)}<br>${esc(site.imprint.street)}<br>${esc(site.imprint.city)}</address>
+<address>${esc(site.imprint.name)}<br>${esc(site.imprint.street)}<br>${esc(site.imprint.city)}</address>
 <p>${esc(im.contactLabel)}: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
-<p class="muted">${esc(im.responsible)}: ${esc(site.owner.name)}</p>
+<p class="muted">${esc(im.responsible)}: ${esc(site.imprint.name)}</p>
 <h2 id="datenschutz">${esc(im.privacyTitle)}</h2>
 ${privacy}
 </div>

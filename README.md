@@ -1,13 +1,13 @@
 # talfahrt.dev
 
-Personal site of Jerome Ceric: projects, software solutions, profile and contact, in German (`/`) and English (`/en/`).
+Site of the talfahrt brand: projects, software solutions, about and contact, in German (`/`) and English (`/en/`).
 
 Static HTML with inlined CSS, one small script for the intro, the command palette and the theme, and a WebGL2 contour field behind the hero. No framework, no dependencies, no tracking.
 
 ## Structure
 
 ```
-content/site.json   brand, owner, email, links, projects, imprint address
+content/site.json   brand, location, email, links, projects, imprint
 content/de.json     German copy
 content/en.json     English copy
 src/page.mjs        page templates (home, imprint, 404)
@@ -54,4 +54,4 @@ Repository settings → Pages: source "GitHub Actions", custom domain `talfahrt.
 
 ## Search and AI discovery
 
-Each page carries canonical and hreflang links, Open Graph and Twitter cards, and JSON-LD for the site, the person, the organisation and every app. `robots.txt` allows search and AI crawlers explicitly, `sitemap.xml` lists all pages, and `llms.txt` summarises the site in plain Markdown.
+Each page carries canonical and hreflang links, Open Graph and Twitter cards, and JSON-LD for the site, the organisation and every app. `robots.txt` allows search and AI crawlers explicitly, `sitemap.xml` lists all pages, and `llms.txt` summarises the site in plain Markdown.
