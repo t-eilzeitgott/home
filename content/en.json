@@ -13,7 +13,8 @@
     "profile": "About",
     "contact": "Contact",
     "menu": "Menu",
-    "palette": "Search and commands"
+    "palette": "Search and commands",
+    "architectures": "Architectures"
   },
   "hero": {
     "claim": "Software engineering from the Wuppertal area, Germany",
@@ -23,13 +24,13 @@
   },
   "projects": {
     "title": "Projects",
-    "intro": "My own web apps, live on talfahrt.dev – designed, built and shipped with AI tools.",
+    "intro": "My own web apps, live on talfahrt.dev – from idea to prototype in hours, in production within days.",
     "open": "Open",
     "items": {
       "gruppetto": {
-        "tagline": "Grand Tour prediction game",
-        "description": "Prediction game for the Giro, Tour de France and Vuelta: stage picks, bonus scoring, a live table – and 3D mini games in between. Mobile first, installable from the home screen.",
-        "stack": "React, TypeScript, Supabase, WebGL"
+        "tagline": "Everything for Grand Tour fans",
+        "description": "The all-in-one app for Grand Tour fans: stage predictions with bonus rankings and joker limits, a live leaderboard for your own group, results and classifications pulled in automatically after every stage, news, stage pages with elevation profiles, climbs and start lists – and 3D mini games where the group races each other. Mobile first, installable from the home screen.",
+        "stack": "React, TypeScript, Supabase, WebGL, GitHub Actions"
       },
       "rosenherz": {
         "tagline": "Castle-building game for iPhone",
@@ -45,23 +46,31 @@
   },
   "services": {
     "title": "Software solutions",
-    "intro": "Software development for companies and teams – per project or ongoing, remote.",
+    "intro": "Software development for companies and teams: from idea to prototype in hours, to a finished solution in production within days. Remote, per project or ongoing.",
     "items": [
       {
         "title": "Web apps that feel like apps",
         "text": "Fast, offline-capable, launched from the home screen – no app store, no bloat. Made for the phone, good on the desktop."
       },
       {
-        "title": "Backend and data",
-        "text": "Spring Boot, PostgreSQL, Supabase. Clear interfaces, data models you can follow, and permissions that hold."
+        "title": "Backend and interfaces",
+        "text": "Java and Spring Boot, REST with OpenAPI, PostgreSQL or Oracle. Production-critical, documented and tested."
       },
       {
-        "title": "Integration and interfaces",
-        "text": "ERP connections, e-invoicing and reporting obligations, data imports that run by themselves at night and tell you in the morning if something is missing."
+        "title": "Cloud and operations",
+        "text": "Kubernetes, Azure or AWS, CI/CD, monitoring with Grafana, Prometheus and Loki. Deployments nobody notices."
+      },
+      {
+        "title": "Performance",
+        "text": "Caching, database tuning, load behaviour under real numbers. Response times that are measured rather than guessed."
+      },
+      {
+        "title": "Integration",
+        "text": "ERP connections, partner interfaces, event streams with Kafka, e-invoicing and reporting obligations. Imports that run at night and report in the morning."
       },
       {
         "title": "Modernisation",
-        "text": "From COBOL, Delphi or SVN to Java, .NET and Git – step by step, without stopping the business."
+        "text": "From Java 8 to current releases, from COBOL, Delphi or SVN to Java, .NET and Git, from one cloud to another – step by step, without stopping the business."
       }
     ]
   },
@@ -75,11 +84,15 @@
       },
       {
         "label": "Focus",
-        "value": "Java, Spring Boot, PostgreSQL, .NET, TypeScript, React, Supabase, WebGL"
+        "value": "Java, Spring Boot, REST/OpenAPI, PostgreSQL, Oracle, .NET, TypeScript, React, Supabase, WebGL"
+      },
+      {
+        "label": "Cloud and operations",
+        "value": "Kubernetes, Docker, Azure, AWS, CI/CD, Grafana, Prometheus, Loki, Kafka, Redis"
       },
       {
         "label": "Also",
-        "value": "COBOL, Delphi, Git migrations, e-invoicing (e.g. KSeF), ERP integration (Dynamics 365)"
+        "value": "COBOL, Delphi, Git migrations, e-invoicing (e.g. KSeF), ERP integration (Dynamics 365), AI integration (LLM connectivity)"
       },
       {
         "label": "Languages",
@@ -114,12 +127,76 @@
       "theme": "Light or dark",
       "copy": "Copy email address",
       "mail": "Write an email",
-      "imprint": "Open imprint"
+      "imprint": "Open imprint",
+      "architectures": "Architectures"
     }
   },
   "notFound": {
     "title": "Page not found",
     "text": "This path leads nowhere. The apps live on their own addresses, everything else starts on the home page.",
     "back": "Back to the home page"
+  },
+  "architectures": {
+    "title": "Architectures",
+    "intro": "Patterns that have proven themselves in production – here as living sketches. Everything is computed in the browser, nothing is video.",
+    "items": [
+      {
+        "id": "cluster",
+        "title": "A cluster that breathes with the load",
+        "text": "Replicas follow demand: scale up as soon as requests rise, scale down only once it stays quiet. Response times stay stable without paying for the peak all day. Kubernetes, autoscaling, health checks, metrics in Grafana and Prometheus.",
+        "hint": "Set the load in the chart with your finger or mouse",
+        "labels": {
+          "load": "Load",
+          "lb": "Load balancer",
+          "pod": "Pod",
+          "replicas": "replicas",
+          "p95": "p95",
+          "rps": "requests/s"
+        }
+      },
+      {
+        "id": "cache",
+        "title": "A cache layer between database and frontend",
+        "text": "A lean middleware answers what it already knows within milliseconds and fetches only the rest from the database. When an entry expires or a record changes, it is invalidated precisely instead of throwing everything away. Redis, Spring Cache, database tuning behind it.",
+        "labels": {
+          "frontend": "Frontend",
+          "middleware": "Middleware",
+          "cache": "Cache",
+          "db": "Database",
+          "hitrate": "hit rate",
+          "p50": "avg. response",
+          "nocache": "without cache"
+        }
+      },
+      {
+        "id": "rollout",
+        "title": "Deployment without downtime",
+        "text": "The new version starts next to the old one, gets checked, receives traffic – only then does the old one leave. Step by step, with a way back, while users notice nothing. Rolling updates, health checks, CI/CD.",
+        "labels": {
+          "traffic": "Traffic",
+          "version": "version",
+          "downtime": "downtime",
+          "errors": "errors",
+          "ready": "ready"
+        }
+      },
+      {
+        "id": "events",
+        "title": "Events instead of file exchange",
+        "text": "ERP, shop and partners write events into a stream; invoicing, warehouse and reporting read at their own pace. If a consumer drops out for a moment, the message waits for it and is never lost. Kafka, integration of ERP and partner systems, e-invoicing.",
+        "labels": {
+          "erp": "ERP",
+          "shop": "Shop",
+          "partner": "Partner",
+          "invoicing": "Invoicing",
+          "warehouse": "Warehouse",
+          "reporting": "Reporting",
+          "perMinute": "events/min",
+          "lag": "lag",
+          "lost": "lost",
+          "retry": "retry"
+        }
+      }
+    ]
   }
 }

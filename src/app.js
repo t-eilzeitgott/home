@@ -171,6 +171,22 @@
     import(new URL(d.dataset.field, document.baseURI).href).then((m) => m.start(canvas, { reduced })).catch(() => {});
   }
 
+  const arch = document.getElementById('architectures');
+  if (arch && d.dataset.scenes) {
+    const loadScenes = () => import(new URL(d.dataset.scenes, document.baseURI).href).then((m) => m.start(arch, d.lang)).catch(() => {});
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          loadScenes();
+        }
+      }, { rootMargin: '600px 0px' });
+      io.observe(arch);
+    } else {
+      loadScenes();
+    }
+  }
+
   const intro = document.getElementById('intro');
   const introMark = document.getElementById('introMark');
   function finish() {

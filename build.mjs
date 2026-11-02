@@ -26,15 +26,17 @@ function build() {
   const css = read(join(SRC, 'styles.css')).trim();
   const app = read(join(SRC, 'app.js'));
   const field = read(join(SRC, 'field.js'));
+  const scenes = read(join(SRC, 'scenes.js'));
   const icons = { gruppetto: read(join(SRC, 'inline', 'gruppetto.svg')).trim() };
 
   rmSync(DIST, { recursive: true, force: true });
   mkdirSync(DIST, { recursive: true });
   cpSync(join(SRC, 'static'), DIST, { recursive: true });
 
-  const scripts = { app: `assets/app.${hash(app)}.js`, field: `assets/field.${hash(field)}.js` };
+  const scripts = { app: `assets/app.${hash(app)}.js`, field: `assets/field.${hash(field)}.js`, scenes: `assets/scenes.${hash(scenes)}.js` };
   write(scripts.app, app);
   write(scripts.field, field);
+  write(scripts.scenes, scenes);
 
   const year = new Date().getFullYear();
   const base = { site, css, scripts, icons, year };
@@ -60,7 +62,8 @@ function build() {
     ['index.html', size('index.html')],
     ['en/index.html', size('en/index.html')],
     [scripts.app, size(scripts.app)],
-    [scripts.field, size(scripts.field)]
+    [scripts.field, size(scripts.field)],
+    [scripts.scenes, size(scripts.scenes)]
   ].map(([n, s]) => `${n} ${(s / 1024).toFixed(1)} kB`).join('\n');
   console.log(summary);
 }
@@ -85,6 +88,7 @@ function llms(site, en, de) {
     return `- [${p.name}](${p.url}): ${s.tagline}. ${s.description} Stack: ${s.stack}.`;
   }).join('\n');
   const services = en.services.items.map((s) => `- ${s.title}: ${s.text}`).join('\n');
+  const architectures = en.architectures.items.map((a) => `- ${a.title}: ${a.text}`).join('\n');
   const facts = en.profile.facts.map((f) => `- ${f.label}: ${f.value}`).join('\n');
   const links = site.links.filter((l) => l.url).map((l) => `- ${l.label}: ${l.url}`).join('\n');
   return `# ${site.brand}
@@ -97,11 +101,21 @@ ${en.profile.intro}
 
 ${facts}
 
+## Skills
+
+${site.skills.join(', ')}
+
 ## Projects
 
 ${projects}
 
+## Architectures
+
+${architectures}
+
 ## Services
+
+${en.services.intro}
 
 ${services}
 

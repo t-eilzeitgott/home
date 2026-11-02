@@ -1,3 +1,5 @@
+import { SCENES } from './scenes.mjs';
+
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonForHtml = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
 
@@ -91,7 +93,7 @@ function head(ctx, page) {
     : '';
   const me = site.links.filter((l) => l.url).map((l) => `<link rel="me" href="${esc(l.url)}">`).join('\n');
   return `<!doctype html>
-<html lang="${page.lang}" data-theme="dark" data-page="${page.kind}" data-root="${root}" data-field="${root}${ctx.scripts.field}">
+<html lang="${page.lang}" data-theme="dark" data-page="${page.kind}" data-root="${root}" data-field="${root}${ctx.scripts.field}" data-scenes="${root}${ctx.scripts.scenes}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -139,6 +141,7 @@ function header(ctx, solid) {
 <a class="top__mark wordmark" href="${root}">talfahrt<span class="wordmark__dot">.</span></a>
 <nav class="top__nav" aria-label="${esc(t.nav.menu)}">
 <a href="${base}#projects">${esc(t.nav.projects)}</a>
+<a href="${base}#architectures">${esc(t.nav.architectures)}</a>
 <a href="${base}#services">${esc(t.nav.services)}</a>
 <a href="${base}#profile">${esc(t.nav.profile)}</a>
 <a href="${base}#contact">${esc(t.nav.contact)}</a>
@@ -202,6 +205,31 @@ function projects(ctx) {
 <ul class="plist">
 ${rows}
 </ul>
+</div>
+</section>`;
+}
+
+function architectures(ctx) {
+  const { t } = ctx;
+  const rows = t.architectures.items.map((a) => `<div class="arch__row" id="arch-${a.id}">
+<div class="arch__text">
+<h3>${esc(a.title)}</h3>
+<p>${esc(a.text)}</p>
+${a.hint ? `<p class="arch__hint">${esc(a.hint)}</p>` : ''}
+</div>
+<div class="stage">
+${SCENES[a.id](a.labels)}
+</div>
+</div>`).join('\n');
+  return `<section class="section" id="architectures" aria-labelledby="architectures-title">
+<div class="wrap">
+<div class="section__head">
+<h2 class="section__title" id="architectures-title">${esc(t.architectures.title)}</h2>
+<p class="section__intro">${esc(t.architectures.intro)}</p>
+</div>
+<div class="arch">
+${rows}
+</div>
 </div>
 </section>`;
 }
@@ -284,6 +312,7 @@ function palette(ctx) {
   const item = (action, target, label, inner, sub, keys) => `<li class="pal__item" role="option" aria-selected="false" data-action="${action}"${target ? ` data-target="${esc(target)}"` : ''} data-keys="${esc((keys || label).toLowerCase())}">${inner}<span>${esc(label)}</span>${sub ? `<span class="pal__sub">${esc(sub)}</span>` : ''}</li>`;
   const pages = [
     item('goto', '#projects', t.nav.projects, glyph('hash')),
+    item('goto', '#architectures', t.nav.architectures, glyph('hash')),
     item('goto', '#services', t.nav.services, glyph('hash')),
     item('goto', '#profile', t.nav.profile, glyph('hash')),
     item('goto', '#contact', t.nav.contact, glyph('hash')),
@@ -336,6 +365,7 @@ ${header(ctx, false)}
 <main id="main">
 ${hero(ctx)}
 ${projects(ctx)}
+${architectures(ctx)}
 ${services(ctx)}
 ${profile(ctx)}
 ${contact(ctx)}
