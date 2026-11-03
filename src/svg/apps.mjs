@@ -3,7 +3,7 @@ import { esc } from './kit.mjs';
 const BAR = `<svg class="dev__bar" viewBox="0 0 393 54" aria-hidden="true"><text x="66" y="35.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,system-ui,sans-serif" font-size="17" font-weight="600" letter-spacing="-.3" fill="#fff">9:41</text><rect x="134.5" y="11" width="124" height="36.5" rx="18.25"/><g fill="#fff"><rect x="292.6" y="31" width="3.2" height="4.4" rx="1"/><rect x="297.4" y="28.8" width="3.2" height="6.6" rx="1"/><rect x="302.2" y="26.6" width="3.2" height="8.8" rx="1"/><rect x="307" y="24.4" width="3.2" height="11" rx="1"/><path d="M324.6 35.6 322.05 33.05A3.6 3.6 0 0 1 327.15 33.05Z"/><rect x="342.5" y="26.9" width="19.5" height="6.2" rx="1.6"/></g><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M320.08 31.08A6.4 6.4 0 0 1 329.12 31.08"/><path d="M317.25 28.25A10.4 10.4 0 0 1 331.95 28.25"/></g><rect x="340.5" y="24.9" width="23.5" height="10.2" rx="3" fill="none" stroke="#fff" stroke-opacity=".4"/><rect x="365.2" y="28.3" width="1.6" height="3.4" rx=".8" fill="#fff" fill-opacity=".4"/></svg>`;
 
 const SHOTS = {
-  gruppetto: { back: 'gruppetto-ride', front: 'gruppetto-stage', card: ['gruppetto-podium', 576, 369, 18] },
+  gruppetto: { back: 'gruppetto-stage', front: 'gruppetto-home', card: ['gruppetto-podium', 576, 369, 18] },
   rosenherz: { back: 'rosenherz-bloom', front: 'rosenherz-castle', card: ['rosenherz-goals', 576, 398, 18] },
   neontd: { back: 'neontd-worlds', front: 'neontd-battle', card: ['neontd-victory', 528, 411, 12] },
   sattelfest: { back: 'sattelfest-brief', front: 'sattelfest-home', card: ['sattelfest-drive', 528, 292, 16] }
