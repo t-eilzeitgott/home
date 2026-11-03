@@ -84,6 +84,16 @@
       "category": "GameApplication",
       "os": "iOS, Android, Web, Windows, macOS, Linux",
       "since": "2026"
+    },
+    {
+      "id": "sattelfest",
+      "name": "Sattelfest",
+      "host": "sattelfest.talfahrt.dev",
+      "url": "https://sattelfest.talfahrt.dev/",
+      "icon": "projects/sattelfest.webp",
+      "category": "GameApplication",
+      "os": "iOS, Web",
+      "since": "2026"
     }
   ],
   "imprint": {

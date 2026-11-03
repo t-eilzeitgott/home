@@ -42,6 +42,11 @@
         "tagline": "Tower defense that glows",
         "description": "Eight worlds, 48 tracks and a new arena every week where everyone plays by the same rules. If you want the top spot, every tower has to count.",
         "platforms": "iPhone, browser and desktop"
+      },
+      "sattelfest": {
+        "tagline": "Docking down to the centimetre",
+        "description": "One articulated lorry, one tight loading bay, and every centimetre counts. Sattelfest is a truck parking simulator seen from above: reverse up to the dock, line it up cleanly, no scratches, against the clock.",
+        "platforms": "iPhone and browser"
       }
     },
     "show": "Show {name}",

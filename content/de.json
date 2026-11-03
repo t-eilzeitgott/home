@@ -42,6 +42,11 @@
         "tagline": "Tower Defense, das leuchtet",
         "description": "Acht Welten, 48 Strecken und jede Woche eine neue Arena, in der alle nach denselben Regeln spielen. Wer oben stehen will, muss jeden Turm genau setzen.",
         "platforms": "iPhone, Browser und Desktop"
+      },
+      "sattelfest": {
+        "tagline": "Rangieren auf den Zentimeter",
+        "description": "Ein Sattelzug, eine enge Rampe und jeder Zentimeter zählt. Sattelfest ist ein LKW-Einparksimulator aus der Vogelperspektive: rückwärts andocken, sauber in die Bucht, ohne Kratzer und gegen die Uhr.",
+        "platforms": "iPhone und Browser"
       }
     },
     "show": "{name} zeigen",
