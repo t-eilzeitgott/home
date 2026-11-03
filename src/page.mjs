@@ -156,10 +156,9 @@ function header(ctx, solid) {
 }
 
 function intro() {
-  const letters = 'talfahrt'.split('').map((c, i, a) => `<span style="--i:${a.length - 1 - i}">${c}</span>`).join('');
   return `<div class="intro" id="intro" aria-hidden="true">
 <div class="intro__bg"></div>
-<div class="intro__mark wordmark" id="introMark"><span class="intro__word">${letters}</span><span class="intro__dot wordmark__dot">.</span><span class="intro__ring"></span></div>
+<div class="intro__mark wordmark" id="introMark"><span class="intro__word">talfahrt</span><span class="intro__dot wordmark__dot">.</span><span class="intro__ring"></span></div>
 </div>`;
 }
 
@@ -168,7 +167,7 @@ function hero(ctx) {
   return `<section class="hero" id="hero">
 <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
 <div class="wrap hero__inner">
-<p class="hero__mark wordmark" id="heroMark" aria-label="talfahrt">talfahrt<span class="wordmark__dot">.</span></p>
+<p class="hero__mark wordmark" id="heroMark" aria-label="talfahrt"><span class="hero__word">talfahrt</span><span class="hero__dot wordmark__dot">.</span></p>
 <div class="hero__body">
 <h1 class="hero__claim">${esc(t.hero.claim)}</h1>
 <p class="hero__lede">${esc(t.hero.lede)}</p>
