@@ -108,7 +108,7 @@ function monitorScene(fig, ctx) {
     alertDetail.textContent = `checkout-api, p95 ${ctx.int(p95)} ms`;
     shown.set(1);
     shift.set(0);
-    log('WARN', 'alertmanager', 'firing HighLatency checkout-api');
+    log('WARN', 'alerts', 'firing: slow responses in checkout-api');
   }
 
   function resolve() {
@@ -117,7 +117,7 @@ function monitorScene(fig, ctx) {
     alert.classList.add('is-ok');
     alertTitle.textContent = alert.dataset.resolved;
     alertDetail.textContent = `${alert.dataset.after} ${duration(sim - incident)}`;
-    log('INFO', 'alertmanager', 'resolved HighLatency checkout-api');
+    log('INFO', 'alerts', 'resolved: checkout-api back to normal');
   }
 
   function watch(dt) {

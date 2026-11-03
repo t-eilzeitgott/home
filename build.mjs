@@ -85,11 +85,11 @@ function llms(site, en, de) {
   const o = site.origin;
   const projects = site.projects.map((p) => {
     const s = en.projects.items[p.id];
-    return `- [${p.name}](${p.url}): ${s.tagline}. ${s.description} Stack: ${s.stack}.`;
+    return `- [${p.name}](${p.url}): ${s.tagline}. ${s.description} Runs on ${s.platforms}.`;
   }).join('\n');
   const services = en.services.items.map((s) => `- ${s.title}: ${s.text}`).join('\n');
-  const architectures = en.architectures.items.map((a) => `- ${a.title}: ${a.text} (${a.stack})`).join('\n');
-  const facts = en.profile.facts.map((f) => `- ${f.label}: ${f.value}`).join('\n');
+  const architectures = en.architectures.items.map((a) => `- ${a.title}: ${a.text}`).join('\n');
+  const facts = en.profile.groups.map((g) => `- ${g.label}: ${g.items.join(', ')}`).join('\n');
   const links = site.links.filter((l) => l.url).map((l) => `- ${l.label}: ${l.url}`).join('\n');
   return `# ${site.brand}
 

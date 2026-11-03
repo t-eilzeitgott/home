@@ -5,7 +5,7 @@
   "otherPath": "en/",
   "otherLabel": "English",
   "title": "talfahrt – Software Engineering, Web-Apps und Backends",
-  "description": "talfahrt: Softwareentwicklung aus dem Raum Wuppertal. Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen. Projekte, Leistungen und Kontakt.",
+  "description": "talfahrt – Softwareentwicklung aus dem Bergischen Land: Softwarelösungen, die sich leicht anfühlen. Apps, Backends, Cloud, Integration und die Modernisierung von Legacy-Anwendungen.",
   "skip": "Zum Inhalt",
   "nav": {
     "projects": "Projekte",
@@ -18,85 +18,103 @@
   },
   "hero": {
     "claim": "Software Engineering aus dem Bergischen Land",
-    "lede": "Web-Apps fürs Handy, Backends in Java und Spring Boot, Schnittstellen, die einfach laufen – Software, die sich leicht anfühlt.",
+    "lede": "Softwarelösungen, die sich leicht anfühlen – und genau das richtig gut können, wofür sie gemacht sind.",
     "primary": "Projekte ansehen",
     "secondary": "Schreib uns"
   },
   "projects": {
     "title": "Projekte",
-    "intro": "Eigene Web-Apps, live unter talfahrt.dev – von der Idee zum Prototyp in Stunden, produktiv in wenigen Tagen.",
+    "intro": "Eigene Apps, live unter talfahrt.dev. Zum Ausprobieren, Mitspielen und Weitersagen.",
     "open": "Öffnen",
     "items": {
       "gruppetto": {
-        "tagline": "Alles für Tour-Fans",
-        "description": "Die All-in-one-App für Grand-Tour-Fans: Etappentipps mit Bonuswertungen und Joker-Limit, Live-Rangliste in der eigenen Runde, Ergebnisse und Wertungsstände automatisch nach jeder Etappe, News, Etappenseiten mit Höhenprofil, Anstiegen und Startliste – und 3D-Minispiele, in denen die Gruppe gegeneinander fährt. Mobile first, als Web-App vom Home-Bildschirm.",
-        "stack": "React, TypeScript, Supabase, WebGL, GitHub Actions"
+        "tagline": "Für Grand-Tour-Fans",
+        "description": "Drei Wochen Grand Tour, jeden Tag ein neuer Sieger. gruppetto macht daraus ein Spiel für die eigene Runde: Etappen tippen, live mitfiebern und zwischendurch selbst in die Pedale treten.",
+        "platforms": "iPhone, Android und Browser"
       },
       "rosenherz": {
-        "tagline": "Aufbauspiel fürs iPhone",
-        "description": "Clara und Mia erben Schloss Rosenherz und machen es Raum für Raum wieder zum Zuhause. Jeder Raum ein 3D-Puppenhaus, jede Grafik in Code gezeichnet, offline spielbar.",
-        "stack": "JavaScript, Three.js, PWA"
+        "tagline": "Ein Schloss, Raum für Raum",
+        "description": "Clara und Mia erben mitten im Winter ein verfallenes Schloss. Raum für Raum wird es wieder ein Zuhause – mit Kaminfeuer, Rosengarten und einem Sommerfest am Ende.",
+        "platforms": "iPhone und Browser"
       },
       "neontd": {
-        "tagline": "Tower Defense im Neon-Look",
-        "description": "8 Welten, 48 handgebaute Strecken, wöchentliche Arena mit weltweiter Rangliste. Die Spiellogik in Java – läuft auf dem iPhone, im Browser und als Desktop-App.",
-        "stack": "Java, WebGL, Supabase"
+        "tagline": "Tower Defense, das leuchtet",
+        "description": "Acht Welten, 48 Strecken und jede Woche eine neue Arena, in der alle nach denselben Regeln spielen. Wer oben stehen will, muss jeden Turm genau setzen.",
+        "platforms": "iPhone, Browser und Desktop"
       }
     }
   },
   "services": {
     "title": "Softwarelösungen",
-    "intro": "Softwareentwicklung für Unternehmen und Teams: von der Idee zum Prototyp in Stunden, zur fertigen Lösung im Betrieb in wenigen Tagen. Remote, projektweise oder laufend.",
+    "intro": "Von der Idee zum Prototyp in Stunden, produktiv in wenigen Tagen. Remote, für ein Projekt oder auf Dauer.",
     "items": [
       {
-        "title": "Web-Apps, die sich wie Apps anfühlen",
-        "text": "Schnell, offline-fähig, vom Home-Bildschirm startbar – ohne App-Store und ohne Ballast. Gedacht fürs Handy, gut am Rechner."
+        "title": "Apps, die man gern benutzt",
+        "text": "Schnell, klar und auf jedem Gerät zu Hause."
       },
       {
-        "title": "Backend und Schnittstellen",
-        "text": "Java und Spring Boot, REST mit OpenAPI, PostgreSQL oder Oracle. Produktionskritisch, dokumentiert und getestet."
+        "title": "Backends, die tragen",
+        "text": "Stabile Schnittstellen und Daten, auf die man sich verlassen kann."
       },
       {
-        "title": "Cloud und Betrieb",
-        "text": "Kubernetes, Azure oder AWS, CI/CD, Monitoring mit Grafana, Prometheus und Loki. Deployments, die niemand bemerkt."
+        "title": "Betrieb ohne Drama",
+        "text": "Updates ohne Ausfall und ein Monitoring, das früh Bescheid sagt."
       },
       {
-        "title": "Performance",
-        "text": "Caching, Datenbank-Tuning, Lastverhalten unter echten Zahlen. Antwortzeiten, die gemessen werden statt geschätzt."
+        "title": "Schnell, auch unter Last",
+        "text": "Caching und Feinschliff, gemessen statt geschätzt."
       },
       {
-        "title": "Integration",
-        "text": "ERP-Anbindungen, Partner-Schnittstellen, Ereignisströme mit Kafka, E-Rechnung und Meldepflichten. Importe, die nachts laufen und morgens Bescheid sagen."
+        "title": "Systeme, die miteinander reden",
+        "text": "ERP, Shop, Partner und E-Rechnung – sauber verbunden."
       },
       {
-        "title": "Modernisierung",
-        "text": "Von Java 8 auf aktuelle Versionen, von Cobol, Delphi oder SVN zu Java, .NET und Git, von einer Cloud in die andere – schrittweise, ohne Stillstand im Betrieb."
+        "title": "Aus Alt mach Neu",
+        "text": "Legacy-Anwendungen Schritt für Schritt nach Java, ohne Stillstand."
       }
     ]
   },
   "profile": {
     "title": "Über talfahrt",
-    "intro": "talfahrt ist ein Software-Studio aus dem Raum Wuppertal: ein Softwareentwickler, alles aus einer Hand. Hier entstehen Backoffice-Systeme in Java und Spring Boot, Schnittstellen zu ERP- und Rechnungssystemen und eigene Web-Apps mit React, Supabase und WebGL.",
-    "facts": [
-      {
-        "label": "Standort",
-        "value": "Raum Wuppertal, Bergisches Land – remote"
-      },
+    "intro": "talfahrt ist ein Software-Studio aus dem Raum Wuppertal: ein Softwareentwickler, alles aus einer Hand – von der ersten Idee bis zum laufenden Betrieb.",
+    "groups": [
       {
         "label": "Schwerpunkte",
-        "value": "Java, Spring Boot, REST/OpenAPI, PostgreSQL, Oracle, .NET, TypeScript, React, Supabase, WebGL"
-      },
-      {
-        "label": "Cloud und Betrieb",
-        "value": "Kubernetes, Docker, Azure, AWS, CI/CD, Grafana, Prometheus, Loki, Kafka, Redis"
+        "items": [
+          "Java",
+          "Spring Boot",
+          "REST und OpenAPI",
+          "SQL-Datenbanken",
+          "Kubernetes",
+          "Azure und AWS",
+          "Kafka",
+          "Redis",
+          "Monitoring",
+          "CI/CD"
+        ]
       },
       {
         "label": "Außerdem",
-        "value": "Cobol, Delphi, Git-Migrationen, E-Rechnung (z. B. KSeF), ERP-Anbindung (Dynamics 365), KI-Integration (LLM-Anbindung)"
+        "items": [
+          "Cobol",
+          "Delphi",
+          "E-Rechnung",
+          "ERP-Anbindung",
+          "Legacy-Modernisierung",
+          "Git-Migrationen",
+          "KI-Integration",
+          "Web-Apps",
+          "3D im Browser"
+        ]
       },
       {
-        "label": "Sprachen",
-        "value": "Deutsch, Englisch"
+        "label": "Standort und Sprachen",
+        "items": [
+          "Bergisches Land",
+          "Remote",
+          "Deutsch",
+          "Englisch"
+        ]
       }
     ]
   },
@@ -153,13 +171,12 @@
   },
   "architectures": {
     "title": "Architekturen",
-    "intro": "Muster, die sich im Betrieb bewährt haben – als lebende Skizzen, die live im Browser rechnen.",
+    "intro": "Muster, die sich im Betrieb bewährt haben.",
     "items": [
       {
         "id": "cluster",
         "title": "Ein Cluster, das mit der Last atmet",
-        "text": "Steigen die Anfragen, fahren neue Instanzen hoch. Wird es ruhig, fahren sie wieder herunter – mit Bedacht, damit nichts flattert. Die Antwortzeit bleibt stabil, die Rechnung klein.",
-        "stack": "Kubernetes, Horizontal Pod Autoscaler, Prometheus, Grafana",
+        "text": "Mehr Anfragen, mehr Instanzen. Wird es ruhig, fährt das System wieder herunter – ohne Hektik und ohne Leerlauf.",
         "labels": {
           "traffic": "Verkehr",
           "lb": "Load Balancer",
@@ -172,24 +189,25 @@
       },
       {
         "id": "cache",
-        "title": "Eine Cache-Schicht zwischen Datenbank und Frontend",
-        "text": "Was schon bekannt ist, beantwortet die Middleware in Millisekunden, nur der Rest geht an die Datenbank. Ändert sich ein Datensatz, wird genau dieser Eintrag verworfen – nicht der ganze Cache.",
-        "stack": "Spring Boot, Spring Cache, Redis, Oracle, PostgreSQL",
+        "title": "Ein Cache zwischen Datenbank und Frontend",
+        "text": "Entweder alles vorab laden und im Hintergrund aktuell halten – oder erst auf Abruf, wenn ein Eintrag gebraucht wird. Ändert sich ein Datensatz, fliegt genau dieser Eintrag raus.",
         "labels": {
           "frontend": "Frontend",
           "middleware": "Middleware",
-          "store": "Redis",
+          "store": "Cache",
           "db": "Datenbank",
           "hitrate": "Trefferquote",
           "latency": "Antwortzeit ⌀",
-          "dbload": "DB-Abfragen/s"
+          "dbload": "DB-Abfragen/s",
+          "strategy": "Strategie",
+          "demand": "Auf Abruf",
+          "preload": "Vorgeladen"
         }
       },
       {
         "id": "rollout",
         "title": "Deployment ohne Stillstand",
-        "text": "Die neue Version startet neben der alten, besteht ihre Health Checks und übernimmt erst dann den Verkehr. Instanz für Instanz, mit Rückweg – die Nutzer merken nichts.",
-        "stack": "Kubernetes, Rolling Updates, Readiness Probes, CI/CD",
+        "text": "Die neue Version startet neben der alten, besteht ihre Checks und übernimmt erst dann. Instanz für Instanz – niemand merkt etwas.",
         "labels": {
           "traffic": "Verkehr",
           "ingress": "Ingress",
@@ -201,10 +219,9 @@
       {
         "id": "events",
         "title": "Ereignisse statt Dateiaustausch",
-        "text": "ERP, Shop und Partner schreiben Ereignisse in einen Strom, jedes System liest in seinem Tempo. Fällt ein Abnehmer aus, warten die Nachrichten auf ihn – und gehen nicht verloren.",
-        "stack": "Kafka, ERP-Integration, Partner-Schnittstellen, E-Rechnung",
+        "text": "Jedes System schreibt in einen gemeinsamen Strom und liest in seinem Tempo. Fällt eines aus, warten die Nachrichten – verloren geht nichts.",
         "labels": {
-          "stream": "Kafka",
+          "stream": "Ereignisstrom",
           "erp": "ERP",
           "shop": "Shop",
           "partner": "Partner",
@@ -219,8 +236,7 @@
       {
         "id": "monitor",
         "title": "Monitoring, das zuerst Bescheid sagt",
-        "text": "Metriken, Logs und Alarme an einem Ort. Steigt die Antwortzeit, meldet sich das System, bevor es jemand merkt – und sagt auch, wann alles wieder gut ist.",
-        "stack": "Grafana, Prometheus, Loki, Alertmanager, SLOs",
+        "text": "Metriken, Logs und Alarme an einem Ort. Wird es langsam, meldet sich das System – bevor es jemand merkt.",
         "labels": {
           "latency": "Antwortzeit",
           "p50": "p50",

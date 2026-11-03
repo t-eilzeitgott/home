@@ -190,7 +190,7 @@ function projects(ctx) {
 <div class="project__text">
 <h3 class="project__title">${esc(p.name)} <span>${esc(s.tagline)}</span></h3>
 <p class="project__desc">${esc(s.description)}</p>
-<p class="project__meta"><span>${esc(s.stack)}</span><span class="host">${esc(p.host)}</span></p>
+<p class="project__meta"><span>${esc(s.platforms)}</span><span class="host">${esc(p.host)}</span></p>
 </div>
 <span class="project__go" aria-hidden="true">${chevron()}</span>
 </a>
@@ -215,7 +215,6 @@ function architectures(ctx) {
 <div class="arch__text">
 <h3>${esc(a.title)}</h3>
 <p>${esc(a.text)}</p>
-<p class="arch__stack">${esc(a.stack)}</p>
 </div>
 ${SCENES[a.id](a.labels)}
 </div>`).join('\n');
@@ -254,16 +253,19 @@ ${items}
 
 function profile(ctx) {
   const { t } = ctx;
-  const facts = t.profile.facts.map((f) => `<dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd>`).join('\n');
+  const groups = t.profile.groups.map((g) => `<div class="skills__group">
+<h3 class="skills__label">${esc(g.label)}</h3>
+<ul class="skills__list">${g.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
+</div>`).join('\n');
   return `<section class="section profile" id="profile" aria-labelledby="profile-title">
 <div class="wrap">
 <div class="section__head">
 <h2 class="section__title" id="profile-title">${esc(t.profile.title)}</h2>
 </div>
 <p class="profile__intro">${esc(t.profile.intro)}</p>
-<dl class="facts">
-${facts}
-</dl>
+<div class="skills">
+${groups}
+</div>
 </div>
 </section>`;
 }

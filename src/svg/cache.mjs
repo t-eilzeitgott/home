@@ -13,7 +13,8 @@ export function cache(l) {
   const middleware = `<g transform="translate(160 40)">${reveal(1.5, `<g class="node"><rect class="node__box" width="160" height="200" rx="22"/><text class="node__label" x="80" y="27" text-anchor="middle">${esc(l.middleware)}</text><text class="cap" x="80" y="186" text-anchor="middle">${esc(l.store)}</text></g>`)}</g>`;
   const database = `<g transform="translate(368 104)">${reveal(4, `<g class="node" data-db><path class="node__box" d="M0 10 A46 10 0 0 1 92 10 V62 A46 10 0 0 1 0 62 Z"/><ellipse class="db__lid" cx="46" cy="10" rx="46" ry="10"/><ellipse class="db__ring" cx="46" cy="10" rx="46" ry="10" style="opacity:0"/><text class="node__label" x="46" y="46" text-anchor="middle">${esc(l.db)}</text></g>`)}</g>`;
   const wires = `${wire('M112 132 L160 132', 1)}${wire('M160 148 L112 148', 1)}${wire('M320 132 L368 132', 3.5)}${wire('M368 148 L320 148', 3.5)}`;
-  return stage('cache', `${wires}${frontend}${middleware}${cells}${database}${packets('cap', 18)}`, meters([
+  const control = `<div class="ctrl rv-html" style="--d:5"><span class="ctrl__label" id="cache-strategy">${esc(l.strategy)}</span><div class="seg" role="radiogroup" aria-labelledby="cache-strategy" data-value="demand"><span class="seg__thumb" aria-hidden="true"></span><button class="seg__opt is-on" type="button" role="radio" aria-checked="true" data-mode="demand">${esc(l.demand)}</button><button class="seg__opt" type="button" role="radio" aria-checked="false" data-mode="preload" tabindex="-1">${esc(l.preload)}</button></div></div>`;
+  return stage('cache', `${wires}${frontend}${middleware}${cells}${database}${packets('cap', 22)}`, control + meters([
     { key: 'hitrate', label: l.hitrate, unit: '%' },
     { key: 'latency', label: l.latency, unit: 'ms' },
     { key: 'dbload', label: l.dbload }

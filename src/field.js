@@ -9,7 +9,6 @@ uniform vec2 r;
 uniform float t;
 uniform vec2 p;
 uniform float k;
-uniform float s;
 uniform vec3 c1;
 uniform vec3 c2;
 uniform float q;
@@ -19,7 +18,7 @@ float fb(vec2 v){float a=.5,h=0.;for(int i=0;i<3;i++){h+=a*nz(v);v=v*2.03+vec2(1
 void main(){
 float m=min(r.x,r.y);
 vec2 u=(gl_FragCoord.xy-.5*r)/m;
-vec2 w=u*1.35+vec2(0.,s*.6);
+vec2 w=u*1.35;
 float d=sin(t*.05)*1.8;
 vec2 g=vec2(fb(w+vec2(d,0.)),fb(w+vec2(5.2,-d)));
 float h=fb(w+.5*g+vec2(0.,d*.25));
@@ -35,9 +34,9 @@ float idx=floor(lv+.5);
 float major=1.-step(.5,abs(mod(idx,4.)));
 float glow=exp(-dd*6.);
 float base=mix(.13,.3,major);
-float al=ln*(base+glow*.45)*q;
+float al=ln*(base+glow*.45*k)*q;
 al*=smoothstep(0.,.22,gl_FragCoord.y/r.y);
-vec3 col=mix(c1,c2,glow*.85);
+vec3 col=mix(c1,c2,glow*.85*k);
 o=vec4(col*al,al);
 }`;
 
@@ -66,21 +65,19 @@ export function start(canvas, opts = {}) {
 
   const reduced = !!opts.reduced;
   const coarse = matchMedia('(pointer: coarse)').matches;
-  const maxDpr = 1.5;
+  const density = Math.min(window.devicePixelRatio || 1, coarse ? 2 : 1.5);
 
   let prog = null;
   let loc = null;
   let w = 0;
   let h = 0;
-  let scale = 1;
   let raf = 0;
   let last = 0;
   let lastDraw = 0;
   let lastInput = performance.now();
-  let frames = 0;
-  let ema = 0.016;
   let visible = false;
   let lost = false;
+  let touching = false;
   let c1 = [1, 1, 1];
   let c2 = [0.48, 0.72, 1];
   let q = 1;
@@ -103,7 +100,7 @@ export function start(canvas, opts = {}) {
     gl.enableVertexAttribArray(a);
     gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
     loc = {};
-    for (const n of ['r', 't', 'p', 'k', 's', 'c1', 'c2', 'q']) loc[n] = gl.getUniformLocation(prog, n);
+    for (const n of ['r', 't', 'p', 'k', 'c1', 'c2', 'q']) loc[n] = gl.getUniformLocation(prog, n);
     gl.clearColor(0, 0, 0, 0);
     gl.disable(gl.DEPTH_TEST);
     gl.disable(gl.BLEND);
@@ -122,9 +119,8 @@ export function start(canvas, opts = {}) {
   }
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, maxDpr) * scale;
-    const nw = Math.max(1, Math.round(canvas.clientWidth * dpr));
-    const nh = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    const nw = Math.max(1, Math.round(canvas.clientWidth * density));
+    const nh = Math.max(1, Math.round(canvas.clientHeight * density));
     if (nw === w && nh === h) return;
     w = nw;
     h = nh;
@@ -139,7 +135,6 @@ export function start(canvas, opts = {}) {
     gl.uniform1f(loc.t, reduced ? 0 : now / 1000);
     gl.uniform2f(loc.p, pt.x, pt.y);
     gl.uniform1f(loc.k, pt.k);
-    gl.uniform1f(loc.s, window.scrollY / Math.max(1, window.innerHeight));
     gl.uniform3f(loc.c1, c1[0], c1[1], c1[2]);
     gl.uniform3f(loc.c2, c2[0], c2[1], c2[2]);
     gl.uniform1f(loc.q, q);
@@ -162,28 +157,18 @@ export function start(canvas, opts = {}) {
   function frame(now) {
     raf = 0;
     if (!running()) return;
-    const dt = Math.min(0.1, (now - last) / 1000) || 0.016;
+    const dt = Math.min(0.05, (now - last) / 1000) || 0.016;
     last = now;
-    const idle = now - lastInput > 2500;
-    if (idle && (now - lastDraw) < 30) {
+    const calm = !touching && now - lastInput > 2500 && settled();
+    if (calm && now - lastDraw < 31) {
       schedule();
       return;
     }
-    const f = 1 - Math.exp(-dt * 9);
-    pt.x += (pt.tx - pt.x) * f;
-    pt.y += (pt.ty - pt.y) * f;
-    pt.k += (pt.tk - pt.k) * (1 - Math.exp(-dt * 5));
+    const follow = 1 - Math.exp(-dt * (touching ? 24 : 12));
+    pt.x += (pt.tx - pt.x) * follow;
+    pt.y += (pt.ty - pt.y) * follow;
+    pt.k += (pt.tk - pt.k) * (1 - Math.exp(-dt * (pt.tk > pt.k ? 10 : 4)));
     draw(now);
-    if (!idle) {
-      frames++;
-      ema += (Math.min(50, dt * 1000) - ema) * 0.1;
-      if (frames > 40 && ema > 26 && scale > 0.5) {
-        scale *= 0.75;
-        frames = 0;
-        ema = 16;
-        resize();
-      }
-    }
     if (reduced && settled()) return;
     schedule();
   }
@@ -193,36 +178,79 @@ export function start(canvas, opts = {}) {
     schedule();
   }
 
-  function setPointer(e) {
+  function aim(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
-    const inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
-    if (inside) {
-      pt.tx = (e.clientX - rect.left) * (w / rect.width);
-      pt.ty = (rect.bottom - e.clientY) * (h / rect.height);
-      pt.tk = 1;
-    } else {
+    if (!rect.width || !rect.height) return;
+    const inside = clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+    if (!inside) {
       pt.tk = 0;
+      kick();
+      return;
     }
+    pt.tx = (clientX - rect.left) * (w / rect.width);
+    pt.ty = (rect.bottom - clientY) * (h / rect.height);
+    if (pt.k < 0.05) {
+      pt.x = pt.tx;
+      pt.y = pt.ty;
+    }
+    pt.tk = 1;
     kick();
   }
+
+  function release() {
+    touching = false;
+    pt.tk = 0;
+    kick();
+  }
+
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'touch') aim(e.clientX, e.clientY);
+  }, { passive: true });
+  window.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'touch') aim(e.clientX, e.clientY);
+  }, { passive: true });
+  window.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    if (!t) return;
+    touching = true;
+    aim(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    if (t) aim(t.clientX, t.clientY);
+  }, { passive: true });
+  window.addEventListener('touchend', (e) => {
+    if (!e.touches.length) release();
+  }, { passive: true });
+  window.addEventListener('touchcancel', release, { passive: true });
+  document.documentElement.addEventListener('mouseleave', () => {
+    pt.tk = 0;
+    kick();
+  });
+  window.addEventListener('blur', release);
+  window.addEventListener('themechange', () => {
+    readColors();
+    kick();
+  });
+  document.addEventListener('visibilitychange', () => {
+    last = performance.now();
+    schedule();
+  });
 
   if (!init()) return false;
   readColors();
   resize();
 
-  window.addEventListener('pointermove', setPointer, { passive: true });
-  window.addEventListener('pointerdown', setPointer, { passive: true });
-  window.addEventListener('pointerup', () => { if (coarse) pt.tk = 0; kick(); }, { passive: true });
-  document.documentElement.addEventListener('mouseleave', () => { pt.tk = 0; kick(); });
-  window.addEventListener('blur', () => { pt.tk = 0; kick(); });
-  window.addEventListener('scroll', kick, { passive: true });
-  window.addEventListener('themechange', () => { readColors(); kick(); });
-  document.addEventListener('visibilitychange', () => { last = performance.now(); schedule(); });
-
   if ('ResizeObserver' in window) {
-    new ResizeObserver(() => { resize(); kick(); }).observe(canvas);
+    new ResizeObserver(() => {
+      resize();
+      kick();
+    }).observe(canvas);
   } else {
-    window.addEventListener('resize', () => { resize(); kick(); });
+    window.addEventListener('resize', () => {
+      resize();
+      kick();
+    });
   }
 
   if ('IntersectionObserver' in window) {
