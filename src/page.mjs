@@ -1,4 +1,4 @@
-import { SCENES } from './scenes.mjs';
+import { SCENES, defs } from './scenes.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonForHtml = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
@@ -215,13 +215,12 @@ function architectures(ctx) {
 <div class="arch__text">
 <h3>${esc(a.title)}</h3>
 <p>${esc(a.text)}</p>
-${a.hint ? `<p class="arch__hint">${esc(a.hint)}</p>` : ''}
+<p class="arch__stack">${esc(a.stack)}</p>
 </div>
-<div class="stage">
 ${SCENES[a.id](a.labels)}
-</div>
 </div>`).join('\n');
   return `<section class="section" id="architectures" aria-labelledby="architectures-title">
+${defs()}
 <div class="wrap">
 <div class="section__head">
 <h2 class="section__title" id="architectures-title">${esc(t.architectures.title)}</h2>

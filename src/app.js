@@ -173,7 +173,11 @@
 
   const arch = document.getElementById('architectures');
   if (arch && d.dataset.scenes) {
-    const loadScenes = () => import(new URL(d.dataset.scenes, document.baseURI).href).then((m) => m.start(arch, d.lang)).catch(() => {});
+    const stages = arch.querySelectorAll('.stage');
+    stages.forEach((s) => s.classList.add('is-pending'));
+    const loadScenes = () => import(new URL(d.dataset.scenes, document.baseURI).href).then((m) => m.start(arch, d.lang)).catch(() => {
+      stages.forEach((s) => s.classList.remove('is-pending'));
+    });
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         if (entries.some((e) => e.isIntersecting)) {

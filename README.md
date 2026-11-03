@@ -2,7 +2,7 @@
 
 Site of the talfahrt brand: projects, software solutions, about and contact, in German (`/`) and English (`/en/`).
 
-Static HTML with inlined CSS, one small script for the intro, the command palette and the theme, and a WebGL2 contour field behind the hero. No framework, no dependencies, no tracking.
+Static HTML with inlined CSS, one small script for the intro, the command palette and the theme, a WebGL2 contour field behind the hero, and five live architecture sketches with monitoring panels that only run while visible. No framework, no dependencies, no tracking.
 
 ## Structure
 
@@ -14,6 +14,8 @@ src/page.mjs        page templates (home, imprint, 404)
 src/styles.css      design tokens and layout, inlined at build time
 src/app.js          intro, palette, theme, language, copy to clipboard
 src/field.js        WebGL2 contour field (loaded after the intro)
+src/svg/            build-time markup of the architecture sketches and their meters
+src/scenes/         runtime of the sketches (springs, packets, sparklines), bundled into one module
 src/static/         CNAME, robots.txt, manifest, icons, Open Graph image, project icons
 src/inline/         SVG icons inlined into the HTML
 build.mjs           zero-dependency build, writes dist/

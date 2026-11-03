@@ -153,63 +153,86 @@
   },
   "architectures": {
     "title": "Architekturen",
-    "intro": "Muster, die sich im Betrieb bewährt haben – hier als lebende Skizzen. Alles rechnet im Browser, nichts ist Video.",
+    "intro": "Muster, die sich im Betrieb bewährt haben – als lebende Skizzen, die live im Browser rechnen.",
     "items": [
       {
         "id": "cluster",
         "title": "Ein Cluster, das mit der Last atmet",
-        "text": "Replikas folgen der Nachfrage: hochfahren, sobald die Anfragen steigen, erst abbauen, wenn es wieder ruhig bleibt. Antwortzeiten bleiben stabil, ohne dauerhaft für die Spitze zu bezahlen. Kubernetes, Autoscaling, Health Checks, Metriken in Grafana und Prometheus.",
-        "hint": "Last im Diagramm mit dem Finger oder der Maus setzen",
+        "text": "Steigen die Anfragen, fahren neue Instanzen hoch. Wird es ruhig, fahren sie wieder herunter – mit Bedacht, damit nichts flattert. Die Antwortzeit bleibt stabil, die Rechnung klein.",
+        "stack": "Kubernetes, Horizontal Pod Autoscaler, Prometheus, Grafana",
         "labels": {
-          "load": "Last",
+          "traffic": "Verkehr",
           "lb": "Load Balancer",
-          "pod": "Pod",
+          "load": "Last",
+          "auto": "Auto",
+          "rps": "Anfragen/s",
           "replicas": "Replikas",
-          "p95": "p95",
-          "rps": "Anfragen/s"
+          "p95": "Antwortzeit p95"
         }
       },
       {
         "id": "cache",
         "title": "Eine Cache-Schicht zwischen Datenbank und Frontend",
-        "text": "Eine schlanke Middleware beantwortet, was sie schon weiß, in Millisekunden und holt nur den Rest aus der Datenbank. Läuft ein Eintrag ab oder ändert sich ein Datensatz, wird gezielt invalidiert statt alles weggeworfen. Redis, Spring Cache, Datenbank-Tuning dahinter.",
+        "text": "Was schon bekannt ist, beantwortet die Middleware in Millisekunden, nur der Rest geht an die Datenbank. Ändert sich ein Datensatz, wird genau dieser Eintrag verworfen – nicht der ganze Cache.",
+        "stack": "Spring Boot, Spring Cache, Redis, Oracle, PostgreSQL",
         "labels": {
           "frontend": "Frontend",
           "middleware": "Middleware",
-          "cache": "Cache",
+          "store": "Redis",
           "db": "Datenbank",
           "hitrate": "Trefferquote",
-          "p50": "Antwort ⌀",
-          "nocache": "ohne Cache"
+          "latency": "Antwortzeit ⌀",
+          "dbload": "DB-Abfragen/s"
         }
       },
       {
         "id": "rollout",
         "title": "Deployment ohne Stillstand",
-        "text": "Die neue Version startet neben der alten, wird geprüft, bekommt Verkehr – erst dann geht die alte vom Netz. Schritt für Schritt, mit Rückweg, während die Nutzer nichts merken. Rolling Updates, Health Checks, CI/CD.",
+        "text": "Die neue Version startet neben der alten, besteht ihre Health Checks und übernimmt erst dann den Verkehr. Instanz für Instanz, mit Rückweg – die Nutzer merken nichts.",
+        "stack": "Kubernetes, Rolling Updates, Readiness Probes, CI/CD",
         "labels": {
           "traffic": "Verkehr",
-          "version": "Version",
-          "downtime": "Ausfall",
+          "ingress": "Ingress",
+          "availability": "Verfügbarkeit",
           "errors": "Fehler",
-          "ready": "bereit"
+          "progress": "Aktualisiert"
         }
       },
       {
         "id": "events",
         "title": "Ereignisse statt Dateiaustausch",
-        "text": "ERP, Shop und Partner schreiben Ereignisse in einen Strom; Rechnung, Lager und Reporting lesen in ihrem Tempo. Fällt ein Abnehmer kurz aus, wartet die Nachricht auf ihn und geht nicht verloren. Kafka, Anbindung von ERP- und Partnersystemen, E-Rechnung.",
+        "text": "ERP, Shop und Partner schreiben Ereignisse in einen Strom, jedes System liest in seinem Tempo. Fällt ein Abnehmer aus, warten die Nachrichten auf ihn – und gehen nicht verloren.",
+        "stack": "Kafka, ERP-Integration, Partner-Schnittstellen, E-Rechnung",
         "labels": {
+          "stream": "Kafka",
           "erp": "ERP",
           "shop": "Shop",
           "partner": "Partner",
           "invoicing": "Rechnung",
           "warehouse": "Lager",
           "reporting": "Reporting",
-          "perMinute": "Ereignisse/min",
+          "rate": "Ereignisse/min",
           "lag": "Verzögerung",
-          "lost": "Verloren",
-          "retry": "Erneut"
+          "lost": "Verloren"
+        }
+      },
+      {
+        "id": "monitor",
+        "title": "Monitoring, das zuerst Bescheid sagt",
+        "text": "Metriken, Logs und Alarme an einem Ort. Steigt die Antwortzeit, meldet sich das System, bevor es jemand merkt – und sagt auch, wann alles wieder gut ist.",
+        "stack": "Grafana, Prometheus, Loki, Alertmanager, SLOs",
+        "labels": {
+          "latency": "Antwortzeit",
+          "p50": "p50",
+          "p95": "p95",
+          "threshold": "Grenzwert",
+          "availability": "Verfügbarkeit, 30 Tage",
+          "availabilityValue": "99,97",
+          "budget": "Fehlerbudget",
+          "logs": "Logs",
+          "firing": "Antwortzeit über Grenzwert",
+          "resolved": "Wieder im grünen Bereich",
+          "after": "Behoben nach"
         }
       }
     ]

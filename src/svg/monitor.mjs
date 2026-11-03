@@ -1,0 +1,10 @@
+import { esc } from './kit.mjs';
+
+export function monitor(l) {
+  const thr = 117 - (250 / 360) * 111;
+  const row = '<li class="log"><time></time><span class="log__lvl"></span><span class="log__src"></span><span class="log__msg"></span></li>';
+  const chart = `<div class="mon__panel rv-html" style="--d:0"><div class="mon__head"><span class="mon__title">${esc(l.latency)}</span><span class="mon__legend"><span class="lg lg--p50"></span>${esc(l.p50)} <b data-v="p50">0</b> ms<span class="lg lg--p95"></span>${esc(l.p95)} <b data-v="p95">0</b> ms</span></div><div class="mon__plot"><svg viewBox="0 0 440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path class="plot__area" data-area d="M0 0"/><path class="plot__thr" d="M0 ${thr.toFixed(2)} L440 ${thr.toFixed(2)}"/><path class="plot__p50" data-p50 d="M0 0"/><path class="plot__p95" data-p95 d="M0 0"/></svg><div class="alert" data-alert data-firing="${esc(l.firing)}" data-resolved="${esc(l.resolved)}" data-after="${esc(l.after)}"><span class="alert__dot"></span><span class="alert__body"><b data-alert-title></b><span data-alert-detail></span></span></div></div><div class="mon__foot"><span class="lg lg--thr"></span>${esc(l.threshold)} 250 ms</div></div>`;
+  const slo = `<div class="mon__panel mon__slo rv-html" style="--d:1.5"><svg class="ring" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle class="ring__track" cx="32" cy="32" r="26"/><circle class="ring__value" data-ring cx="32" cy="32" r="26" pathLength="100" transform="rotate(-90 32 32)"/></svg><div class="slo"><span class="slo__value"><b data-v="availability">${esc(l.availabilityValue)}</b> %</span><span class="slo__label">${esc(l.availability)}</span><span class="slo__label">${esc(l.budget)} <b data-v="budget">74</b> %</span></div></div>`;
+  const logs = `<div class="mon__panel mon__logs rv-html" style="--d:3"><div class="mon__head"><span class="mon__title">${esc(l.logs)}</span></div><ol class="logs" data-logs>${row.repeat(7)}</ol></div>`;
+  return `<figure class="stage stage--monitor" data-scene="monitor"><div class="mon">${chart}<div class="mon__row">${slo}${logs}</div></div></figure>`;
+}

@@ -26,7 +26,7 @@ function build() {
   const css = read(join(SRC, 'styles.css')).trim();
   const app = read(join(SRC, 'app.js'));
   const field = read(join(SRC, 'field.js'));
-  const scenes = read(join(SRC, 'scenes.js'));
+  const scenes = ['kit', 'flow', 'meters', 'cluster', 'cache', 'rollout', 'events', 'monitor', 'main'].map((name) => read(join(SRC, 'scenes', `${name}.js`))).join('\n');
   const icons = { gruppetto: read(join(SRC, 'inline', 'gruppetto.svg')).trim() };
 
   rmSync(DIST, { recursive: true, force: true });
@@ -88,7 +88,7 @@ function llms(site, en, de) {
     return `- [${p.name}](${p.url}): ${s.tagline}. ${s.description} Stack: ${s.stack}.`;
   }).join('\n');
   const services = en.services.items.map((s) => `- ${s.title}: ${s.text}`).join('\n');
-  const architectures = en.architectures.items.map((a) => `- ${a.title}: ${a.text}`).join('\n');
+  const architectures = en.architectures.items.map((a) => `- ${a.title}: ${a.text} (${a.stack})`).join('\n');
   const facts = en.profile.facts.map((f) => `- ${f.label}: ${f.value}`).join('\n');
   const links = site.links.filter((l) => l.url).map((l) => `- ${l.label}: ${l.url}`).join('\n');
   return `# ${site.brand}

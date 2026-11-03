@@ -138,63 +138,86 @@
   },
   "architectures": {
     "title": "Architectures",
-    "intro": "Patterns that have proven themselves in production – here as living sketches. Everything is computed in the browser, nothing is video.",
+    "intro": "Patterns that have proven themselves in production – as living sketches, computed live in your browser.",
     "items": [
       {
         "id": "cluster",
         "title": "A cluster that breathes with the load",
-        "text": "Replicas follow demand: scale up as soon as requests rise, scale down only once it stays quiet. Response times stay stable without paying for the peak all day. Kubernetes, autoscaling, health checks, metrics in Grafana and Prometheus.",
-        "hint": "Set the load in the chart with your finger or mouse",
+        "text": "When requests rise, new instances spin up. When it calms down, they scale back – carefully, so nothing flaps. Response times stay steady, the bill stays small.",
+        "stack": "Kubernetes, Horizontal Pod Autoscaler, Prometheus, Grafana",
         "labels": {
-          "load": "Load",
+          "traffic": "Traffic",
           "lb": "Load balancer",
-          "pod": "Pod",
-          "replicas": "replicas",
-          "p95": "p95",
-          "rps": "requests/s"
+          "load": "Load",
+          "auto": "Auto",
+          "rps": "Requests/s",
+          "replicas": "Replicas",
+          "p95": "Response p95"
         }
       },
       {
         "id": "cache",
         "title": "A cache layer between database and frontend",
-        "text": "A lean middleware answers what it already knows within milliseconds and fetches only the rest from the database. When an entry expires or a record changes, it is invalidated precisely instead of throwing everything away. Redis, Spring Cache, database tuning behind it.",
+        "text": "What is already known, the middleware answers within milliseconds; only the rest goes to the database. When a record changes, exactly that entry is dropped – not the whole cache.",
+        "stack": "Spring Boot, Spring Cache, Redis, Oracle, PostgreSQL",
         "labels": {
           "frontend": "Frontend",
           "middleware": "Middleware",
-          "cache": "Cache",
+          "store": "Redis",
           "db": "Database",
-          "hitrate": "hit rate",
-          "p50": "avg. response",
-          "nocache": "without cache"
+          "hitrate": "Hit rate",
+          "latency": "Avg. response",
+          "dbload": "DB queries/s"
         }
       },
       {
         "id": "rollout",
         "title": "Deployment without downtime",
-        "text": "The new version starts next to the old one, gets checked, receives traffic – only then does the old one leave. Step by step, with a way back, while users notice nothing. Rolling updates, health checks, CI/CD.",
+        "text": "The new version starts next to the old one, passes its health checks and only then takes over traffic. Instance by instance, with a way back – users notice nothing.",
+        "stack": "Kubernetes, rolling updates, readiness probes, CI/CD",
         "labels": {
           "traffic": "Traffic",
-          "version": "version",
-          "downtime": "downtime",
-          "errors": "errors",
-          "ready": "ready"
+          "ingress": "Ingress",
+          "availability": "Availability",
+          "errors": "Errors",
+          "progress": "Updated"
         }
       },
       {
         "id": "events",
         "title": "Events instead of file exchange",
-        "text": "ERP, shop and partners write events into a stream; invoicing, warehouse and reporting read at their own pace. If a consumer drops out for a moment, the message waits for it and is never lost. Kafka, integration of ERP and partner systems, e-invoicing.",
+        "text": "ERP, shop and partners write events into a stream, every system reads at its own pace. If a consumer drops out, the messages wait for it – and are never lost.",
+        "stack": "Kafka, ERP integration, partner interfaces, e-invoicing",
         "labels": {
+          "stream": "Kafka",
           "erp": "ERP",
           "shop": "Shop",
           "partner": "Partner",
           "invoicing": "Invoicing",
           "warehouse": "Warehouse",
           "reporting": "Reporting",
-          "perMinute": "events/min",
-          "lag": "lag",
-          "lost": "lost",
-          "retry": "retry"
+          "rate": "Events/min",
+          "lag": "Consumer lag",
+          "lost": "Lost"
+        }
+      },
+      {
+        "id": "monitor",
+        "title": "Monitoring that speaks up first",
+        "text": "Metrics, logs and alerts in one place. When response times creep up, the system speaks up before anyone notices – and also tells you when everything is fine again.",
+        "stack": "Grafana, Prometheus, Loki, Alertmanager, SLOs",
+        "labels": {
+          "latency": "Response time",
+          "p50": "p50",
+          "p95": "p95",
+          "threshold": "Threshold",
+          "availability": "Availability, 30 days",
+          "availabilityValue": "99.97",
+          "budget": "Error budget",
+          "logs": "Logs",
+          "firing": "Response time above threshold",
+          "resolved": "Back to normal",
+          "after": "Resolved after"
         }
       }
     ]
