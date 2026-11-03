@@ -180,27 +180,31 @@
     const pill = apps.querySelector('.apps__dots b');
     const arrows = Array.from(apps.querySelectorAll('.apps__arrow'));
     const limit = (v, a, b) => Math.max(a, Math.min(b, v));
+    const linked = !reduced && !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
     let width = 0;
     let current = -1;
     let pending = false;
+    let idle = 0;
+    const settle = () => {
+      idle = 0;
+      slides.forEach((s, i) => { s.inert = i !== current; });
+    };
     const mark = (k) => {
       if (k === current) return;
       current = k;
-      slides.forEach((s, i) => {
-        s.classList.toggle('is-on', i === k);
-        s.inert = i !== k;
-      });
+      slides.forEach((s, i) => s.classList.toggle('is-on', i === k));
       dots.forEach((b, i) => b.setAttribute('aria-current', String(i === k)));
       arrows.forEach((b) => { b.disabled = (Number(b.dataset.dir) < 0 && k === 0) || (Number(b.dataset.dir) > 0 && k === slides.length - 1); });
     };
     const paint = (x) => {
       const f = x - Math.floor(x);
-      slides.forEach((s, i) => {
-        const p = limit(i - x, -1.6, 1.6);
-        s.style.setProperty('--p', p.toFixed(4));
-        s.style.setProperty('--a', Math.abs(p).toFixed(4));
-        s.classList.toggle('is-far', Math.abs(p) > 1.45);
-      });
+      if (!linked) {
+        slides.forEach((s, i) => {
+          const p = limit(i - x, -1.6, 1.6);
+          s.style.setProperty('--p', p.toFixed(4));
+          s.style.setProperty('--a', Math.abs(p).toFixed(4));
+        });
+      }
       aura.forEach((l, i) => { l.style.opacity = Math.max(0, 1 - Math.abs(i - x)).toFixed(3); });
       if (pill) pill.style.transform = `translateX(${(x * 17).toFixed(2)}px) scaleX(${(1 + 1.2 * Math.sin(f * Math.PI)).toFixed(3)})`;
       mark(Math.round(x));
@@ -222,6 +226,8 @@
         pending = true;
         requestAnimationFrame(onScroll);
       }
+      clearTimeout(idle);
+      idle = setTimeout(settle, 160);
     }, { passive: true });
     dots.forEach((b, i) => b.addEventListener('click', () => go(i)));
     arrows.forEach((b) => b.addEventListener('click', () => go(current + Number(b.dataset.dir))));
@@ -232,6 +238,7 @@
       }
     });
     paint(0);
+    settle();
     if ('ResizeObserver' in window) new ResizeObserver(measure).observe(rail);
     else window.addEventListener('resize', measure);
     measure();
@@ -240,15 +247,19 @@
       const near = new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
         near.disconnect();
-        apps.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
+        apps.querySelectorAll('img').forEach((i) => {
+          i.loading = 'eager';
+          if (i.decode) i.decode().catch(() => {});
+        });
       }, { rootMargin: '600px 0px' });
       near.observe(apps);
       new IntersectionObserver(([e]) => {
         apps.classList.toggle('is-off', !e.isIntersecting);
         if (e.isIntersecting && !seen && !reduced) {
           seen = true;
-          apps.classList.add('is-intro');
-          setTimeout(() => apps.classList.remove('is-intro'), 1800);
+          const first = slides[Math.max(0, current)];
+          first.classList.add('is-intro');
+          setTimeout(() => first.classList.remove('is-intro'), 1800);
         }
       }, { threshold: 0.25 }).observe(apps);
     }
@@ -258,9 +269,8 @@
   if (arch && d.dataset.scenes) {
     const stages = arch.querySelectorAll('.stage');
     stages.forEach((s) => s.classList.add('is-pending'));
-    const loadScenes = () => import(new URL(d.dataset.scenes, document.baseURI).href).then((m) => m.start(arch, d.lang)).catch(() => {
-      stages.forEach((s) => s.classList.remove('is-pending'));
-    });
+    const fail = () => stages.forEach((s) => s.classList.remove('is-pending'));
+    const loadScenes = () => import(new URL(d.dataset.scenes, document.baseURI).href).then((m) => m.start(arch, d.lang)).catch(fail);
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         if (entries.some((e) => e.isIntersecting)) {

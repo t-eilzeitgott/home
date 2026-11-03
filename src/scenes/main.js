@@ -7,7 +7,7 @@ export function start(root, lang) {
     fixed2: (v) => formats[2].format(v)
   };
   const factories = { cluster: clusterScene, cache: cacheScene, rollout: rolloutScene, events: eventsScene, monitor: monitorScene };
-  for (const fig of root.querySelectorAll('.stage[data-scene]')) {
+  const build = (fig) => {
     try {
       const make = factories[fig.dataset.scene];
       if (!make) throw new Error(fig.dataset.scene);
@@ -15,5 +15,18 @@ export function start(root, lang) {
     } catch (error) {
       fig.classList.remove('is-pending');
     }
+  };
+  const figs = Array.from(root.querySelectorAll('.stage[data-scene]'));
+  if (!('IntersectionObserver' in window)) {
+    figs.forEach(build);
+    return;
   }
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      io.unobserve(e.target);
+      build(e.target);
+    }
+  }, { rootMargin: '160px 0px' });
+  figs.forEach((fig) => io.observe(fig));
 }

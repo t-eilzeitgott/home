@@ -406,7 +406,6 @@ html.no-intro .hero__body { animation: none; }
   will-change: transform, opacity;
 }
 .app__scene { --u: min(calc(100cqw / 390), 1.32px); position: relative; display: block; height: calc(424 * var(--u)); }
-.app.is-far :is(.app__stage, .app__info) { visibility: hidden; }
 .app__glow { position: absolute; inset: 4% 0; border-radius: 50%; background: radial-gradient(closest-side, var(--wa), transparent); transform: translateX(calc(var(--p) * 6cqw)); }
 .dev, .card {
   position: absolute;
@@ -420,11 +419,14 @@ html.no-intro .hero__body { animation: none; }
 .dev--front { --x: -72; --y: 8; --w: 182; --d: 1; }
 .card { --x: 78; --y: 126; --w: 172; --d: 1.65; }
 .dev__pop, .dev__frame, .dev__glass, .dev__screen, .card__pop, .card__in { display: block; }
+.dev__pop { position: relative; }
+.dev__pop::before { content: ""; position: absolute; inset: 6% -12% -9%; background: radial-gradient(42% 7% at 50% 94%, rgba(0, 0, 0, .6), transparent), radial-gradient(58% 48% at 50% 60%, rgba(0, 0, 0, .4), transparent); pointer-events: none; }
+[data-theme="light"] .dev__pop::before { background: radial-gradient(42% 7% at 50% 94%, rgba(20, 20, 40, .28), transparent), radial-gradient(58% 48% at 50% 60%, rgba(20, 20, 40, .12), transparent); }
 .dev__frame {
   padding: calc(var(--w) * var(--u) * .009);
   border-radius: calc(var(--w) * var(--u) * .165);
   background: linear-gradient(155deg, #8c8c92 0%, #323235 15%, #1b1b1d 40%, #3c3c40 68%, #1c1c1f 86%, #606066 100%);
-  box-shadow: 0 calc(38 * var(--u)) calc(72 * var(--u)) calc(-24 * var(--u)) rgba(0, 0, 0, .85), 0 calc(12 * var(--u)) calc(28 * var(--u)) calc(-12 * var(--u)) rgba(0, 0, 0, .6);
+  box-shadow: 0 calc(2 * var(--u)) calc(6 * var(--u)) rgba(0, 0, 0, .45);
 }
 .dev__glass { padding: calc(var(--w) * var(--u) * .026); border-radius: calc(var(--w) * var(--u) * .156); background: #000; box-shadow: inset 0 0 0 calc(var(--u) * .6) rgba(255, 255, 255, .1); }
 .dev__screen { position: relative; overflow: hidden; border-radius: calc(var(--w) * var(--u) * .13); background: #000; }
@@ -437,10 +439,9 @@ html.no-intro .hero__body { animation: none; }
   overflow: hidden;
   border-radius: calc(var(--r) * var(--u));
   background: #0a0a0b;
-  box-shadow: 0 0 0 calc(var(--u) * .7) rgba(255, 255, 255, .16), 0 calc(30 * var(--u)) calc(60 * var(--u)) calc(-16 * var(--u)) rgba(0, 0, 0, .85), 0 calc(10 * var(--u)) calc(22 * var(--u)) calc(-8 * var(--u)) rgba(0, 0, 0, .55);
+  box-shadow: 0 0 0 calc(var(--u) * .7) rgba(255, 255, 255, .16), 0 calc(14 * var(--u)) calc(30 * var(--u)) calc(-8 * var(--u)) rgba(0, 0, 0, .75);
 }
-[data-theme="light"] .dev__frame { box-shadow: 0 calc(30 * var(--u)) calc(56 * var(--u)) calc(-26 * var(--u)) rgba(20, 20, 40, .3), 0 calc(10 * var(--u)) calc(22 * var(--u)) calc(-14 * var(--u)) rgba(20, 20, 40, .22); }
-[data-theme="light"] .card__in { box-shadow: 0 0 0 calc(var(--u) * .7) rgba(0, 0, 0, .1), 0 calc(24 * var(--u)) calc(48 * var(--u)) calc(-18 * var(--u)) rgba(20, 20, 40, .32), 0 calc(8 * var(--u)) calc(18 * var(--u)) calc(-10 * var(--u)) rgba(20, 20, 40, .2); }
+[data-theme="light"] .card__in { box-shadow: 0 0 0 calc(var(--u) * .7) rgba(0, 0, 0, .1), 0 calc(14 * var(--u)) calc(30 * var(--u)) calc(-10 * var(--u)) rgba(20, 20, 40, .32); }
 .app__info { width: min(600px, 100% - 2 * var(--gutter)); margin-top: clamp(4px, 1.6vh, 16px); transform: translateX(calc(var(--p) * 16%)); opacity: calc(1 - var(--a) * 1.7); will-change: transform, opacity; }
 .app__head { display: flex; align-items: center; gap: 14px; }
 .app__icon { flex: none; width: 60px; height: 60px; border-radius: 22.5%; overflow: hidden; background: #000; box-shadow: 0 0 0 1px rgba(255, 255, 255, .13), 0 10px 24px -10px rgba(0, 0, 0, .7); }
@@ -493,11 +494,13 @@ html.no-intro .hero__body { animation: none; }
   .app__meta { margin-top: 14px; }
   .apps__nav { margin-top: -64px; }
 }
-.apps.is-intro .app.is-on .dev__pop { animation: app-rise 1.05s var(--ease) both; }
-.apps.is-intro .app.is-on .dev--back .dev__pop { animation-delay: .04s; }
-.apps.is-intro .app.is-on .dev--front .dev__pop { animation-delay: .13s; }
-.apps.is-intro .app.is-on .card__pop { animation: app-lift 1s var(--spring) .34s both; }
-.apps.is-intro .app.is-on .app__info { animation: app-rise .8s var(--ease) .22s both; }
+.app.is-intro .dev__pop { animation: app-rise 1.05s var(--ease) both; }
+.app.is-intro .dev--back .dev__pop { animation-delay: .04s; }
+.app.is-intro .dev--front .dev__pop { animation-delay: .13s; }
+.app.is-intro .card__pop { animation: app-lift 1s var(--spring) .34s both; }
+.app.is-intro .app__info > * { animation: app-rise .8s var(--ease) .2s both; }
+.app.is-intro .app__desc { animation-delay: .26s; }
+.app.is-intro .app__meta { animation-delay: .32s; }
 @keyframes app-rise { 0% { opacity: 0; transform: translateY(40px); } 45% { opacity: 1; } 100% { opacity: 1; transform: none; } }
 @keyframes app-lift { 0% { opacity: 0; transform: translateY(28px) scale(.9); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
@@ -505,6 +508,20 @@ html.no-intro .hero__body { animation: none; }
   .app:not(.is-on) .card__in, .apps.is-off .card__in { animation-play-state: paused; }
 }
 @keyframes app-float { from { transform: translateY(-4px); } to { transform: translateY(5px); } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .app { view-timeline: --slide inline; }
+    .app__stage, .app__glow, .app__info, .dev, .card { animation-duration: auto; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: --slide; animation-range: cover 0% cover 100%; }
+    .app__stage { animation-name: slide-stage; }
+    .app__glow { animation-name: slide-glow; }
+    .app__info { animation-name: slide-info; }
+    .dev, .card { animation-name: slide-layer; }
+  }
+}
+@keyframes slide-stage { 0% { opacity: .4; transform: translateX(-34%) scale(.86); } 50% { opacity: 1; transform: translateX(0) scale(1); } 100% { opacity: .4; transform: translateX(34%) scale(.86); } }
+@keyframes slide-glow { 0% { transform: translateX(6cqw); } 100% { transform: translateX(-6cqw); } }
+@keyframes slide-info { 0% { opacity: 0; transform: translateX(16%); } 20.6% { opacity: 0; } 50% { opacity: 1; } 79.4% { opacity: 0; } 100% { opacity: 0; transform: translateX(-16%); } }
+@keyframes slide-layer { 0% { transform: translate(-50%, -50%) translate(calc(var(--x) * var(--u) + var(--d) * 18cqw), calc(var(--y) * var(--u))); } 100% { transform: translate(-50%, -50%) translate(calc(var(--x) * var(--u) - var(--d) * 18cqw), calc(var(--y) * var(--u))); } }
 @media (prefers-reduced-motion: reduce) {
   .app__stage, .app__info, .app__glow { transform: none; }
   .dev, .card { transform: translate(-50%, -50%) translate(calc(var(--x) * var(--u)), calc(var(--y) * var(--u))); }
