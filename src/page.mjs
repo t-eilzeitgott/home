@@ -1,4 +1,5 @@
 import { SCENES, defs } from './scenes.mjs';
+import { appsCarousel } from './svg/apps.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonForHtml = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
@@ -14,7 +15,6 @@ const GLYPHS = {
 };
 
 const glyph = (name) => `<span class="pal__glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[name]}</svg></span>`;
-const chevron = () => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
 
 function icon(ctx, project, size) {
   if (project.icon.endsWith('.svg')) return ctx.icons[project.id];
@@ -182,30 +182,18 @@ function hero(ctx) {
 
 function projects(ctx) {
   const { site, t } = ctx;
-  const rows = site.projects.map((p) => {
-    const s = t.projects.items[p.id];
-    return `<li>
-<a class="project" href="${p.url}">
-<span class="project__icon">${icon(ctx, p, 64)}</span>
-<div class="project__text">
-<h3 class="project__title">${esc(p.name)} <span>${esc(s.tagline)}</span></h3>
-<p class="project__desc">${esc(s.description)}</p>
-<p class="project__meta"><span>${esc(s.platforms)}</span><span class="host">${esc(p.host)}</span></p>
-</div>
-<span class="project__go" aria-hidden="true">${chevron()}</span>
-</a>
-</li>`;
-  }).join('\n');
+  const icons = {};
+  for (const p of site.projects) {
+    icons[p.id] = p.icon.endsWith('.svg') ? ctx.icons[p.id] : `<img src="${ctx.root}${p.icon}" width="384" height="384" alt="" loading="lazy" decoding="async" draggable="false">`;
+  }
   return `<section class="section" id="projects" aria-labelledby="projects-title">
 <div class="wrap">
 <div class="section__head">
 <h2 class="section__title" id="projects-title">${esc(t.projects.title)}</h2>
 <p class="section__intro">${esc(t.projects.intro)}</p>
 </div>
-<ul class="plist">
-${rows}
-</ul>
 </div>
+${appsCarousel(ctx, icons)}
 </section>`;
 }
 

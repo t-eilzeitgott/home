@@ -25,7 +25,7 @@
   "projects": {
     "title": "Projekte",
     "intro": "Eigene Apps, live unter talfahrt.dev. Zum Ausprobieren, Mitspielen und Weitersagen.",
-    "open": "Öffnen",
+    "open": "{name} öffnen",
     "items": {
       "gruppetto": {
         "tagline": "Für Grand-Tour-Fans",
@@ -42,7 +42,11 @@
         "description": "Acht Welten, 48 Strecken und jede Woche eine neue Arena, in der alle nach denselben Regeln spielen. Wer oben stehen will, muss jeden Turm genau setzen.",
         "platforms": "iPhone, Browser und Desktop"
       }
-    }
+    },
+    "show": "{name} zeigen",
+    "previous": "Vorherige App",
+    "next": "Nächste App",
+    "position": "{n} von {total}: {name}"
   },
   "services": {
     "title": "Softwarelösungen",

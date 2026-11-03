@@ -171,6 +171,83 @@
     import(new URL(d.dataset.field, document.baseURI).href).then((m) => m.start(canvas, { reduced })).catch(() => {});
   }
 
+  const apps = document.querySelector('.apps');
+  if (apps) {
+    const rail = apps.querySelector('.apps__rail');
+    const slides = Array.from(rail.children);
+    const aura = Array.from(apps.querySelectorAll('.apps__aura i'));
+    const dots = Array.from(apps.querySelectorAll('.apps__dots button'));
+    const pill = apps.querySelector('.apps__dots b');
+    const arrows = Array.from(apps.querySelectorAll('.apps__arrow'));
+    const limit = (v, a, b) => Math.max(a, Math.min(b, v));
+    let width = 0;
+    let current = -1;
+    let pending = false;
+    const mark = (k) => {
+      if (k === current) return;
+      current = k;
+      slides.forEach((s, i) => {
+        s.classList.toggle('is-on', i === k);
+        s.inert = i !== k;
+      });
+      dots.forEach((b, i) => b.setAttribute('aria-current', String(i === k)));
+      arrows.forEach((b) => { b.disabled = (Number(b.dataset.dir) < 0 && k === 0) || (Number(b.dataset.dir) > 0 && k === slides.length - 1); });
+    };
+    const paint = (x) => {
+      const f = x - Math.floor(x);
+      slides.forEach((s, i) => {
+        const p = limit(i - x, -1.6, 1.6);
+        s.style.setProperty('--p', p.toFixed(4));
+        s.style.setProperty('--a', Math.abs(p).toFixed(4));
+        s.classList.toggle('is-far', Math.abs(p) > 1.45);
+      });
+      aura.forEach((l, i) => { l.style.opacity = Math.max(0, 1 - Math.abs(i - x)).toFixed(3); });
+      if (pill) pill.style.transform = `translateX(${(x * 17).toFixed(2)}px) scaleX(${(1 + 1.2 * Math.sin(f * Math.PI)).toFixed(3)})`;
+      mark(Math.round(x));
+    };
+    const onScroll = () => {
+      pending = false;
+      if (width) paint(limit(rail.scrollLeft / width, 0, slides.length - 1));
+    };
+    const measure = () => {
+      const w = rail.clientWidth;
+      if (!w || w === width) return;
+      width = w;
+      rail.scrollLeft = Math.max(0, current) * w;
+      onScroll();
+    };
+    const go = (i) => rail.scrollTo({ left: limit(i, 0, slides.length - 1) * width, behavior: reduced ? 'auto' : 'smooth' });
+    rail.addEventListener('scroll', () => {
+      if (!pending) {
+        pending = true;
+        requestAnimationFrame(onScroll);
+      }
+    }, { passive: true });
+    dots.forEach((b, i) => b.addEventListener('click', () => go(i)));
+    arrows.forEach((b) => b.addEventListener('click', () => go(current + Number(b.dataset.dir))));
+    rail.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        go(current + (e.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
+    paint(0);
+    if ('ResizeObserver' in window) new ResizeObserver(measure).observe(rail);
+    else window.addEventListener('resize', measure);
+    measure();
+    if ('IntersectionObserver' in window) {
+      let seen = false;
+      new IntersectionObserver(([e]) => {
+        apps.classList.toggle('is-off', !e.isIntersecting);
+        if (e.isIntersecting && !seen && !reduced) {
+          seen = true;
+          apps.classList.add('is-intro');
+          setTimeout(() => apps.classList.remove('is-intro'), 1800);
+        }
+      }, { threshold: 0.25 }).observe(apps);
+    }
+  }
+
   const arch = document.getElementById('architectures');
   if (arch && d.dataset.scenes) {
     const stages = arch.querySelectorAll('.stage');

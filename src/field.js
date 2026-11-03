@@ -4,39 +4,73 @@ void main(){gl_Position=vec4(a,0.,1.);}`;
 
 const FRAG = `#version 300 es
 precision highp float;
+precision highp int;
 out vec4 o;
 uniform vec2 r;
 uniform float t;
 uniform vec2 p;
 uniform float k;
+uniform float px;
 uniform vec3 c1;
 uniform vec3 c2;
 uniform float q;
-float hs(vec2 v){return fract(sin(dot(v,vec2(127.1,311.7)))*43758.5453);}
-float nz(vec2 v){vec2 i=floor(v),f=fract(v);f=f*f*(3.-2.*f);return mix(mix(hs(i),hs(i+vec2(1.,0.)),f.x),mix(hs(i+vec2(0.,1.)),hs(i+vec2(1.,1.)),f.x),f.y);}
-float fb(vec2 v){float a=.5,h=0.;for(int i=0;i<3;i++){h+=a*nz(v);v=v*2.03+vec2(1.7,9.2);a*=.5;}return h;}
+uvec2 pcg(uvec2 v){
+v=v*1664525u+1013904223u;
+v.x+=v.y*1664525u;v.y+=v.x*1664525u;
+v^=v>>16u;
+v.x+=v.y*1664525u;v.y+=v.x*1664525u;
+v^=v>>16u;
+return v;
+}
+vec2 gr(vec2 i){
+uvec2 h=pcg(uvec2(ivec2(i)+ivec2(32768)));
+float a=float(h.x>>8u)*(6.28318530718/16777216.);
+return vec2(cos(a),sin(a));
+}
+float gn(vec2 x){
+vec2 i=floor(x);
+vec2 f=fract(x);
+vec2 u=f*f*f*(f*(f*6.-15.)+10.);
+float a=dot(gr(i),f);
+float b=dot(gr(i+vec2(1.,0.)),f-vec2(1.,0.));
+float c=dot(gr(i+vec2(0.,1.)),f-vec2(0.,1.));
+float d=dot(gr(i+vec2(1.,1.)),f-vec2(1.,1.));
+return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);
+}
+const mat2 R=mat2(.8,.6,-.6,.8);
+float fbm(vec2 x){
+float s=0.;
+float a=.5;
+for(int i=0;i<4;i++){s+=a*gn(x);x=R*x*2.03+vec2(3.1,1.7);a*=.5;}
+return s;
+}
 void main(){
 float m=min(r.x,r.y);
 vec2 u=(gl_FragCoord.xy-.5*r)/m;
-vec2 w=u*1.35;
-float d=sin(t*.05)*1.8;
-vec2 g=vec2(fb(w+vec2(d,0.)),fb(w+vec2(5.2,-d)));
-float h=fb(w+.5*g+vec2(0.,d*.25));
-vec2 e=(gl_FragCoord.xy-p)/m;
+vec2 pu=(p-.5*r)/m;
+vec2 e=u-pu;
 float dd=dot(e,e);
-h+=k*.26*exp(-dd*20.);
-float lv=h*18.;
+float ang=k*.22*exp(-dd*16.);
+float cs=cos(ang);
+float sn=sin(ang);
+vec2 w=(pu+mat2(cs,sn,-sn,cs)*e)*1.25;
+float s=t*.045;
+vec2 a=vec2(gn(w*.6+vec2(s*.7,-s*.4)),gn(w*.6+vec2(5.2,1.3)+vec2(-s*.5,s*.6)));
+vec2 b=vec2(gn(w+a+vec2(1.7,9.2)+vec2(s*.3,s*.2)),gn(w+a+vec2(8.3,2.8)-vec2(s*.25,s*.35)));
+float h=fbm(w+.75*b)*.85+.5;
+h+=k*.16*exp(-dd*26.);
+float lv=h*19.;
+float fw=max(length(vec2(dFdx(lv),dFdy(lv))),1e-4);
 float fr=fract(lv);
-float f=min(fr,1.-fr);
-float aa=fwidth(lv)*.8+.012;
-float ln=1.-smoothstep(0.,aa,f);
-float idx=floor(lv+.5);
-float major=1.-step(.5,abs(mod(idx,4.)));
-float glow=exp(-dd*6.);
-float base=mix(.13,.3,major);
-float al=ln*(base+glow*.45*k)*q;
-al*=smoothstep(0.,.22,gl_FragCoord.y/r.y);
-vec3 col=mix(c1,c2,glow*.85*k);
+float dist=min(fr,1.-fr)/fw;
+float major=1.-step(.5,abs(mod(floor(lv+.5),5.)));
+float hw=mix(.42,.78,major)*px;
+float ln=(1.-smoothstep(hw-.55,hw+.55,dist))*(1.-smoothstep(.18,.42,fw));
+float glow=exp(-dd*8.)*k;
+float base=mix(.11,.26,major)*mix(.8,1.15,clamp(h,0.,1.));
+float al=ln*(base+glow*.42)+.02*smoothstep(.45,.95,h);
+al*=q*smoothstep(0.,.22,gl_FragCoord.y/r.y);
+vec3 col=mix(c1,c2,clamp(glow*1.6,0.,1.));
 o=vec4(col*al,al);
 }`;
 
@@ -65,7 +99,8 @@ export function start(canvas, opts = {}) {
 
   const reduced = !!opts.reduced;
   const coarse = matchMedia('(pointer: coarse)').matches;
-  const density = Math.min(window.devicePixelRatio || 1, coarse ? 2 : 1.5);
+  const cap = Math.min(window.devicePixelRatio || 1, coarse ? 2 : 1.5);
+  let density = cap;
 
   let prog = null;
   let loc = null;
@@ -100,7 +135,7 @@ export function start(canvas, opts = {}) {
     gl.enableVertexAttribArray(a);
     gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
     loc = {};
-    for (const n of ['r', 't', 'p', 'k', 'c1', 'c2', 'q']) loc[n] = gl.getUniformLocation(prog, n);
+    for (const n of ['r', 't', 'p', 'k', 'px', 'c1', 'c2', 'q']) loc[n] = gl.getUniformLocation(prog, n);
     gl.clearColor(0, 0, 0, 0);
     gl.disable(gl.DEPTH_TEST);
     gl.disable(gl.BLEND);
@@ -119,8 +154,11 @@ export function start(canvas, opts = {}) {
   }
 
   function resize() {
-    const nw = Math.max(1, Math.round(canvas.clientWidth * density));
-    const nh = Math.max(1, Math.round(canvas.clientHeight * density));
+    const cw = canvas.clientWidth;
+    const ch = canvas.clientHeight;
+    density = Math.min(cap, Math.sqrt(2.4e6 / Math.max(1, cw * ch)));
+    const nw = Math.max(1, Math.round(cw * density));
+    const nh = Math.max(1, Math.round(ch * density));
     if (nw === w && nh === h) return;
     w = nw;
     h = nh;
@@ -135,6 +173,7 @@ export function start(canvas, opts = {}) {
     gl.uniform1f(loc.t, reduced ? 0 : now / 1000);
     gl.uniform2f(loc.p, pt.x, pt.y);
     gl.uniform1f(loc.k, pt.k);
+    gl.uniform1f(loc.px, density);
     gl.uniform3f(loc.c1, c1[0], c1[1], c1[2]);
     gl.uniform3f(loc.c2, c2[0], c2[1], c2[2]);
     gl.uniform1f(loc.q, q);
@@ -159,8 +198,8 @@ export function start(canvas, opts = {}) {
     if (!running()) return;
     const dt = Math.min(0.05, (now - last) / 1000) || 0.016;
     last = now;
-    const calm = !touching && now - lastInput > 2500 && settled();
-    if (calm && now - lastDraw < 31) {
+    const calm = !touching && now - lastInput > 1000;
+    if (calm && now - lastDraw < 14) {
       schedule();
       return;
     }

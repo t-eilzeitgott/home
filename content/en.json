@@ -25,7 +25,7 @@
   "projects": {
     "title": "Projects",
     "intro": "Apps made at talfahrt, live now. Try them, play them, pass them on.",
-    "open": "Open",
+    "open": "Open {name}",
     "items": {
       "gruppetto": {
         "tagline": "For Grand Tour fans",
@@ -42,7 +42,11 @@
         "description": "Eight worlds, 48 tracks and a new arena every week where everyone plays by the same rules. If you want the top spot, every tower has to count.",
         "platforms": "iPhone, browser and desktop"
       }
-    }
+    },
+    "show": "Show {name}",
+    "previous": "Previous app",
+    "next": "Next app",
+    "position": "{n} of {total}: {name}"
   },
   "services": {
     "title": "Software solutions",
