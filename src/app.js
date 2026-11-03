@@ -237,6 +237,12 @@
     measure();
     if ('IntersectionObserver' in window) {
       let seen = false;
+      const near = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting) return;
+        near.disconnect();
+        apps.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
+      }, { rootMargin: '600px 0px' });
+      near.observe(apps);
       new IntersectionObserver(([e]) => {
         apps.classList.toggle('is-off', !e.isIntersecting);
         if (e.isIntersecting && !seen && !reduced) {

@@ -26,6 +26,7 @@
     "title": "Projects",
     "intro": "Apps made at talfahrt, live now. Try them, play them, pass them on.",
     "open": "Open {name}",
+    "cta": "Open",
     "items": {
       "gruppetto": {
         "tagline": "For Grand Tour fans",

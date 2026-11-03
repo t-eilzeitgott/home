@@ -26,6 +26,7 @@
     "title": "Projekte",
     "intro": "Eigene Apps, live unter talfahrt.dev. Zum Ausprobieren, Mitspielen und Weitersagen.",
     "open": "{name} öffnen",
+    "cta": "Öffnen",
     "items": {
       "gruppetto": {
         "tagline": "Für Grand-Tour-Fans",

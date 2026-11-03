@@ -1,5 +1,5 @@
 import { SCENES, defs } from './scenes.mjs';
-import { appsCarousel } from './svg/apps.mjs';
+import { appsCarousel, screenshot } from './svg/apps.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonForHtml = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
@@ -76,6 +76,7 @@ function structuredData(ctx, page) {
       applicationCategory: p.category,
       operatingSystem: p.os,
       description: t.projects.items[p.id].description,
+      screenshot: screenshot(origin, p.id),
       author: { '@id': org },
       publisher: { '@id': org }
     }))
