@@ -488,10 +488,10 @@ html.no-intro .hero__body { animation: none; }
 .apps__arrow:hover { border-color: var(--surface3); }
 .apps__arrow:active { transform: scale(.92); }
 .apps__arrow:disabled { opacity: .3; cursor: default; transform: none; }
-.apps__dots { position: relative; display: flex; gap: 10px; padding: 6px 0; }
+.apps__dots { position: relative; display: flex; gap: 10px; padding: 6px 0; isolation: isolate; }
 .apps__dots button { position: relative; width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: var(--text); opacity: .22; cursor: pointer; }
 .apps__dots button::after { content: ""; position: absolute; inset: -12px -6px; }
-.apps__dots b { position: absolute; left: 0; top: 6px; width: 7px; height: 7px; border-radius: 4px; background: var(--text); pointer-events: none; transform-origin: 3.5px 50%; }
+.apps__dots b { position: absolute; left: 0; top: 6px; width: 7px; height: 7px; border-radius: 4px; background: var(--text); pointer-events: none; transform-origin: 3.5px 50%; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 @media (min-width: 900px) {
   .apps { --ax: calc(50% - min(282px, 22vw)); --ay: 44%; }
   .apps__rail { padding-bottom: 104px; }
