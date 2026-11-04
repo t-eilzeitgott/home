@@ -248,7 +248,6 @@
     else window.addEventListener('resize', measure);
     measure();
     if ('IntersectionObserver' in window) {
-      let seen = false;
       const near = new IntersectionObserver(([e]) => {
         if (!e.isIntersecting) return;
         near.disconnect();
@@ -260,13 +259,7 @@
       near.observe(apps);
       new IntersectionObserver(([e]) => {
         apps.classList.toggle('is-off', !e.isIntersecting);
-        if (e.isIntersecting && !seen && !reduced) {
-          seen = true;
-          const first = slides[Math.max(0, current)];
-          first.classList.add('is-intro');
-          setTimeout(() => first.classList.remove('is-intro'), 1800);
-        }
-      }, { threshold: 0.25 }).observe(apps);
+      }).observe(apps);
     }
   }
 

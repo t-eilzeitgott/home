@@ -504,15 +504,6 @@ html.no-intro .hero__body { animation: none; }
   .app__meta { margin-top: 14px; }
   .apps__nav { margin-top: -64px; }
 }
-.app.is-intro .dev__pop { animation: app-rise 1.05s var(--ease) both; }
-.app.is-intro .dev--back .dev__pop { animation-delay: .04s; }
-.app.is-intro .dev--front .dev__pop { animation-delay: .13s; }
-.app.is-intro .card__pop { animation: app-lift 1s var(--spring) .34s both; }
-.app.is-intro .app__info > * { animation: app-rise .8s var(--ease) .2s both; }
-.app.is-intro .app__desc { animation-delay: .26s; }
-.app.is-intro .app__meta { animation-delay: .32s; }
-@keyframes app-rise { 0% { opacity: 0; transform: translateY(40px); } 45% { opacity: 1; } 100% { opacity: 1; transform: none; } }
-@keyframes app-lift { 0% { opacity: 0; transform: translateY(28px) scale(.9); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: no-preference) {
   .card__in { animation: app-float 6.5s ease-in-out infinite alternate; }
   .app:not(.is-on) .card__in, .apps.is-off .card__in { animation-play-state: paused; }
