@@ -178,6 +178,7 @@
     const aura = Array.from(apps.querySelectorAll('.apps__aura i'));
     const dots = Array.from(apps.querySelectorAll('.apps__dots button'));
     const pill = apps.querySelector('.apps__dots b');
+    const track = dots.length * 17 - 10;
     const arrows = Array.from(apps.querySelectorAll('.apps__arrow'));
     const limit = (v, a, b) => Math.max(a, Math.min(b, v));
     const linked = !reduced && !!(window.CSS && CSS.supports && CSS.supports('animation-timeline: view()'));
@@ -206,7 +207,11 @@
         });
       }
       aura.forEach((l, i) => { l.style.opacity = Math.max(0, 1 - Math.abs(i - x)).toFixed(3); });
-      if (pill) pill.style.transform = `translateX(${(x * 17).toFixed(2)}px) scaleX(${(1 + 1.2 * Math.sin(f * Math.PI)).toFixed(3)})`;
+      if (pill) {
+        const c = x * 17 + 3.5;
+        const half = 3.5 * (1 + 1.2 * Math.sin(f * Math.PI));
+        pill.style.clipPath = `inset(0 ${(track - c - half).toFixed(2)}px 0 ${(c - half).toFixed(2)}px round 3.5px)`;
+      }
       mark(Math.round(x));
     };
     const onScroll = () => {
