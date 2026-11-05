@@ -6,7 +6,7 @@ export function start(root, lang) {
     fixed1: (v) => formats[1].format(v),
     fixed2: (v) => formats[2].format(v)
   };
-  const factories = { cluster: clusterScene, cache: cacheScene, rollout: rolloutScene, events: eventsScene, monitor: monitorScene };
+  const factories = { cluster: clusterScene, cache: cacheScene, rollout: rolloutScene, events: eventsScene, vision: visionScene, monitor: monitorScene };
   const build = (fig) => {
     try {
       const make = factories[fig.dataset.scene];

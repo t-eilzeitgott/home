@@ -26,7 +26,7 @@ function build() {
   const css = read(join(SRC, 'styles.css')).trim();
   const app = read(join(SRC, 'app.js'));
   const field = read(join(SRC, 'field.js'));
-  const scenes = ['kit', 'flow', 'meters', 'cluster', 'cache', 'rollout', 'events', 'monitor', 'main'].map((name) => read(join(SRC, 'scenes', `${name}.js`))).join('\n');
+  const scenes = ['kit', 'flow', 'meters', 'cluster', 'cache', 'rollout', 'events', 'vision', 'monitor', 'main'].map((name) => read(join(SRC, 'scenes', `${name}.js`))).join('\n');
   const icons = { gruppetto: read(join(SRC, 'inline', 'gruppetto.svg')).trim() };
 
   rmSync(DIST, { recursive: true, force: true });

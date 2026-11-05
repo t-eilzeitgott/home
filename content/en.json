@@ -29,13 +29,13 @@
     "cta": "Open",
     "items": {
       "gruppetto": {
-        "tagline": "For Grand Tour fans",
-        "description": "Three weeks of Grand Tour, a new winner every day. gruppetto turns it into a game for your own crew: pick the stages, follow along live and take to the pedals yourself in between.",
+        "tagline": "The app for Grand Tour fans",
+        "description": "The key news, every stage with profile and classifications, a prediction league with friends and mini games in between – all in one app.",
         "platforms": "iPhone, Android and browser"
       },
       "rosenherz": {
-        "tagline": "A castle, room by room",
-        "description": "In the middle of winter, Clara and Mia inherit a crumbling castle. Room by room it becomes a home again – with a crackling fire, a rose garden and a summer party at the end.",
+        "tagline": "Build, furnish, play",
+        "description": "A gripping build-and-decorate game: room by room, a crumbling castle becomes a real home. And in between, there are plenty of fun mini games.",
         "platforms": "iPhone and browser"
       },
       "neontd": {
@@ -226,6 +226,64 @@
           "rate": "Events/min",
           "lag": "Consumer lag",
           "lost": "Lost"
+        }
+      },
+      {
+        "id": "vision",
+        "title": "One photo, and the app knows",
+        "text": "A vision model reads receipts, clothes or meter readings and returns clean data. The backend checks every answer – anything uncertain goes to a person.",
+        "labels": {
+          "backend": "Backend",
+          "model": "Vision model",
+          "saved": "Saved",
+          "review": "Review",
+          "latency": "Response time",
+          "auto": "Automated",
+          "queue": "In review",
+          "examples": [
+            [
+              [
+                "Merchant",
+                "Corner Café"
+              ],
+              [
+                "Date",
+                "Nov 5"
+              ],
+              [
+                "Total",
+                "€12.40"
+              ]
+            ],
+            [
+              [
+                "Type",
+                "Jacket"
+              ],
+              [
+                "Colour",
+                "Navy"
+              ],
+              [
+                "Style",
+                "Casual"
+              ]
+            ],
+            [
+              [
+                "Meter",
+                "Electricity"
+              ],
+              [
+                "Reading",
+                "48,213 kWh"
+              ],
+              [
+                "Date",
+                "Nov 1"
+              ]
+            ]
+          ]
         }
       },
       {

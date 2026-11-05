@@ -29,13 +29,13 @@
     "cta": "Öffnen",
     "items": {
       "gruppetto": {
-        "tagline": "Für Grand-Tour-Fans",
-        "description": "Drei Wochen Grand Tour, jeden Tag ein neuer Sieger. gruppetto macht daraus ein Spiel für die eigene Runde: Etappen tippen, live mitfiebern und zwischendurch selbst in die Pedale treten.",
+        "tagline": "Die App für Grand‑Tour‑Fans",
+        "description": "Die wichtigsten News, jede Etappe mit Profil und Wertungen, eine Tipprunde mit Freunden und Minispiele für zwischendurch – alles in einer App.",
         "platforms": "iPhone, Android und Browser"
       },
       "rosenherz": {
-        "tagline": "Ein Schloss, Raum für Raum",
-        "description": "Clara und Mia erben mitten im Winter ein verfallenes Schloss. Raum für Raum wird es wieder ein Zuhause – mit Kaminfeuer, Rosengarten und einem Sommerfest am Ende.",
+        "tagline": "Aufbauen, einrichten, spielen",
+        "description": "Ein packendes Aufbau- und Einrichtungsspiel: Raum für Raum wird aus einem verfallenen Schloss ein echtes Zuhause. Und zwischendurch warten jede Menge spaßige Minispiele.",
         "platforms": "iPhone und Browser"
       },
       "neontd": {
@@ -241,6 +241,64 @@
           "rate": "Ereignisse/min",
           "lag": "Verzögerung",
           "lost": "Verloren"
+        }
+      },
+      {
+        "id": "vision",
+        "title": "Ein Foto, und die App weiß Bescheid",
+        "text": "Ein Bildmodell erkennt Belege, Kleidung oder Zählerstände und liefert saubere Daten zurück. Das Backend prüft jede Antwort – was unsicher ist, landet bei einem Menschen.",
+        "labels": {
+          "backend": "Backend",
+          "model": "Bildmodell",
+          "saved": "Gespeichert",
+          "review": "Prüfung",
+          "latency": "Antwortzeit",
+          "auto": "Automatisch",
+          "queue": "Zur Prüfung",
+          "examples": [
+            [
+              [
+                "Händler",
+                "Café am Markt"
+              ],
+              [
+                "Datum",
+                "05.11."
+              ],
+              [
+                "Betrag",
+                "12,40 €"
+              ]
+            ],
+            [
+              [
+                "Art",
+                "Jacke"
+              ],
+              [
+                "Farbe",
+                "Navy"
+              ],
+              [
+                "Stil",
+                "Casual"
+              ]
+            ],
+            [
+              [
+                "Zähler",
+                "Strom"
+              ],
+              [
+                "Stand",
+                "48.213 kWh"
+              ],
+              [
+                "Datum",
+                "01.11."
+              ]
+            ]
+          ]
         }
       },
       {
