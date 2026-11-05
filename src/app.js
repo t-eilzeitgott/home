@@ -305,7 +305,7 @@
       const land = () => { if (!done) { done = true; finish(); } };
       introMark.addEventListener('transitionend', (e) => { if (e.propertyName === 'transform') land(); });
       setTimeout(land, 900);
-    }, 1250);
+    }, 1620);
   } else {
     d.classList.add('no-intro');
     finish();

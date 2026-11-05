@@ -126,8 +126,9 @@ ${me}
 <link rel="icon" href="${root}icons/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="${root}icons/apple-touch-icon.png">
 <link rel="manifest" href="${root}manifest.webmanifest">
+<link rel="preload" href="${root}fonts/jbmono.woff" as="font" type="font/woff" crossorigin>
 <script>${boot(ctx)}</script>
-<style>${ctx.css}</style>
+<style>@font-face{font-family:"JetBrains Mono";src:url(${root}fonts/jbmono.woff) format("woff");font-weight:100 800;font-style:normal;font-display:swap}${ctx.css}</style>
 <script type="application/ld+json">${jsonForHtml(structuredData(ctx, page))}</script>
 </head>`;
 }
@@ -139,7 +140,7 @@ function header(ctx, solid) {
   const otherHref = `${root}${t.otherPath}`;
   return `<header class="top${solid ? ' top--solid' : ''}" id="top">
 <div class="wrap">
-<a class="top__mark wordmark" href="${root}">talfahrt<span class="wordmark__dot">.</span></a>
+<a class="top__mark wordmark" href="${root}" aria-label="talfahrt">tal<i>\\</i>fahrt<i>_</i></a>
 <nav class="top__nav" aria-label="${esc(t.nav.menu)}">
 <a href="${base}#projects">${esc(t.nav.projects)}</a>
 <a href="${base}#architectures">${esc(t.nav.architectures)}</a>
@@ -155,10 +156,14 @@ function header(ctx, solid) {
 </header>`;
 }
 
+const TYPE = { start: 300, step: 70, pause: 220 };
+
 function intro() {
-  return `<div class="intro" id="intro" aria-hidden="true">
+  const chars = (text, from) => text.split('').map((c, n) => `<b style="--t:${from + (n + 1) * TYPE.step}ms">${c}</b>`).join('');
+  const second = TYPE.start + 4 * TYPE.step + TYPE.pause;
+  return `<div class="intro" id="intro" aria-hidden="true" style="--t1:${TYPE.start}ms;--t2:${second}ms;--t3:${second + 5 * TYPE.step}ms">
 <div class="intro__bg"></div>
-<div class="intro__mark wordmark" id="introMark"><span class="intro__word">talfahrt</span><span class="intro__dot wordmark__dot">.</span><span class="intro__ring"></span></div>
+<div class="intro__mark wordmark mark" id="introMark"><span class="mark__l1">${chars('tal', TYPE.start)}<b class="mark__acc" style="--t:${TYPE.start + 4 * TYPE.step}ms">\\</b><i class="intro__cur1">_</i></span><span class="mark__l2">${chars('fahrt', second)}<i class="intro__cur2">_</i></span></div>
 </div>`;
 }
 
@@ -167,7 +172,7 @@ function hero(ctx) {
   return `<section class="hero" id="hero">
 <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
 <div class="wrap hero__inner">
-<p class="hero__mark wordmark" id="heroMark" aria-label="talfahrt"><span class="hero__word">talfahrt</span><span class="hero__dot wordmark__dot">.</span></p>
+<p class="hero__mark wordmark mark" id="heroMark" aria-label="talfahrt"><span class="mark__l1" aria-hidden="true">tal<i>\\</i></span><span class="mark__l2" aria-hidden="true">fahrt<i class="mark__cur">_</i></span></p>
 <div class="hero__body">
 <h1 class="hero__claim">${esc(t.hero.claim)}</h1>
 <p class="hero__lede">${esc(t.hero.lede)}</p>
