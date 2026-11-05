@@ -67,16 +67,6 @@
       "since": "2026"
     },
     {
-      "id": "rosenherz",
-      "name": "Rosenherz",
-      "host": "rosenherz.talfahrt.dev",
-      "url": "https://rosenherz.talfahrt.dev/",
-      "icon": "projects/rosenherz.webp",
-      "category": "GameApplication",
-      "os": "iOS, Web",
-      "since": "2026"
-    },
-    {
       "id": "neontd",
       "name": "Neon TD",
       "host": "td.talfahrt.dev",

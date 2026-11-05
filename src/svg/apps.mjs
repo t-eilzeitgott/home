@@ -4,7 +4,6 @@ const BAR = `<svg class="dev__bar" viewBox="0 0 393 54" aria-hidden="true"><text
 
 const SHOTS = {
   gruppetto: { back: 'gruppetto-stage', front: 'gruppetto-home', card: ['gruppetto-podium', 576, 369, 18] },
-  rosenherz: { back: 'rosenherz-bloom', front: 'rosenherz-castle', card: ['rosenherz-goals', 576, 398, 18] },
   neontd: { back: 'neontd-worlds', front: 'neontd-battle', card: ['neontd-victory', 528, 411, 12] },
   sattelfest: { back: 'sattelfest-dock', front: 'sattelfest-home', card: ['sattelfest-result', 528, 292, 16] }
 };

@@ -369,11 +369,9 @@ html.no-intro .hero__body { animation: none; }
 }
 
 .app--gruppetto { --wa: rgba(255, 95, 162, .24); --wb: rgba(255, 150, 196, .1); --btn: #ff5fa2; --btn-tx: #1c0010; }
-.app--rosenherz { --wa: rgba(165, 123, 255, .26); --wb: rgba(255, 120, 184, .12); --btn: #c4a6ff; --btn-tx: #190a38; }
 .app--neontd { --wa: rgba(34, 229, 255, .2); --wb: rgba(255, 61, 242, .12); --btn: #22e5ff; --btn-tx: #00161c; }
 .app--sattelfest { --wa: rgba(255, 182, 45, .2); --wb: rgba(255, 128, 40, .1); --btn: #ffb62d; --btn-tx: #1a1100; }
 [data-theme="light"] .app--gruppetto { --wa: rgba(255, 95, 162, .17); --wb: rgba(255, 95, 162, .07); --btn: #d61f72; --btn-tx: #fff; }
-[data-theme="light"] .app--rosenherz { --wa: rgba(145, 96, 240, .17); --wb: rgba(255, 110, 175, .08); --btn: #6d45d8; --btn-tx: #fff; }
 [data-theme="light"] .app--neontd { --wa: rgba(0, 170, 210, .16); --wb: rgba(230, 40, 220, .07); --btn: #0a7f9c; --btn-tx: #fff; }
 [data-theme="light"] .app--sattelfest { --wa: rgba(240, 160, 20, .18); --wb: rgba(240, 110, 20, .07); --btn: #f5a623; --btn-tx: #1a1100; }
 
