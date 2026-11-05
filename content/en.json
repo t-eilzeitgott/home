@@ -33,6 +33,11 @@
         "description": "The key news, every stage with profile and classifications, a prediction league with friends and mini games in between – all in one app.",
         "platforms": "iPhone, Android and browser"
       },
+      "fitcheck": {
+        "tagline": "Your wardrobe as a sticker album",
+        "description": "Snap your clothes – Fitcheck cuts them out and sorts them by type, colour and style. See a look you like in a screenshot or on Pinterest, and the app rebuilds it from your own wardrobe.",
+        "platforms": "iPhone and browser"
+      },
       "neontd": {
         "tagline": "Tower defense that glows",
         "description": "Eight worlds, 48 tracks and a new arena every week where everyone plays by the same rules. If you want the top spot, every tower has to count.",

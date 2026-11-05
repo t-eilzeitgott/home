@@ -369,9 +369,11 @@ html.no-intro .hero__body { animation: none; }
 }
 
 .app--gruppetto { --wa: rgba(255, 95, 162, .24); --wb: rgba(255, 150, 196, .1); --btn: #ff5fa2; --btn-tx: #1c0010; }
+.app--fitcheck { --wa: rgba(236, 214, 170, .2); --wb: rgba(244, 208, 63, .1); --btn: #f4f1eb; --btn-tx: #16140f; }
 .app--neontd { --wa: rgba(34, 229, 255, .2); --wb: rgba(255, 61, 242, .12); --btn: #22e5ff; --btn-tx: #00161c; }
 .app--sattelfest { --wa: rgba(255, 182, 45, .2); --wb: rgba(255, 128, 40, .1); --btn: #ffb62d; --btn-tx: #1a1100; }
 [data-theme="light"] .app--gruppetto { --wa: rgba(255, 95, 162, .17); --wb: rgba(255, 95, 162, .07); --btn: #d61f72; --btn-tx: #fff; }
+[data-theme="light"] .app--fitcheck { --wa: rgba(190, 160, 110, .2); --wb: rgba(220, 180, 40, .08); --btn: #16140f; --btn-tx: #f4f1eb; }
 [data-theme="light"] .app--neontd { --wa: rgba(0, 170, 210, .16); --wb: rgba(230, 40, 220, .07); --btn: #0a7f9c; --btn-tx: #fff; }
 [data-theme="light"] .app--sattelfest { --wa: rgba(240, 160, 20, .18); --wb: rgba(240, 110, 20, .07); --btn: #f5a623; --btn-tx: #1a1100; }
 
@@ -434,7 +436,11 @@ html.no-intro .hero__body { animation: none; }
 .dev__screen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(118deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .02) 26%, rgba(255, 255, 255, 0) 40%); pointer-events: none; }
 .dev--back .dev__screen::after { background: linear-gradient(118deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, 0) 36%), rgba(0, 0, 0, .2); }
 .dev__screen img, .card__in img { display: block; width: 100%; height: auto; -webkit-user-drag: none; user-select: none; pointer-events: none; }
-.dev__bar { position: absolute; left: 0; top: 0; width: 100%; height: auto; }
+.dev__bar { position: absolute; left: 0; top: 0; width: 100%; height: auto; color: #fff; }
+.dev--light .dev__bar { color: #16140f; }
+.dev--light .dev__home { background: #16140f; opacity: .85; }
+.dev--light .dev__screen { background: #f4f1eb; }
+.app--fitcheck .card { --x: 98; --y: 124; --w: 128; }
 .dev__home { position: absolute; left: 33%; right: 33%; bottom: .95%; height: .6%; border-radius: 9px; background: #fff; opacity: .9; }
 .card__in {
   overflow: hidden;

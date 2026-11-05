@@ -67,6 +67,16 @@
       "since": "2026"
     },
     {
+      "id": "fitcheck",
+      "name": "Fitcheck",
+      "host": "t-eilzeitgott.github.io/fitcheck",
+      "url": "https://t-eilzeitgott.github.io/fitcheck/",
+      "icon": "projects/fitcheck.webp",
+      "category": "LifestyleApplication",
+      "os": "iOS, Web",
+      "since": "2026"
+    },
+    {
       "id": "neontd",
       "name": "Neon TD",
       "host": "td.talfahrt.dev",

@@ -33,6 +33,11 @@
         "description": "Die wichtigsten News, jede Etappe mit Profil und Wertungen, eine Tipprunde mit Freunden und Minispiele für zwischendurch – alles in einer App.",
         "platforms": "iPhone, Android und Browser"
       },
+      "fitcheck": {
+        "tagline": "Der Kleiderschrank als Stickeralbum",
+        "description": "Teile fotografieren – Fitcheck stellt sie frei und sortiert sie nach Art, Farbe und Stil. Gefällt dir ein Look aus Screenshot oder Pinterest, baut die App ihn aus deinem eigenen Schrank nach.",
+        "platforms": "iPhone und Browser"
+      },
       "neontd": {
         "tagline": "Tower Defense, das leuchtet",
         "description": "Acht Welten, 48 Strecken und jede Woche eine neue Arena, in der alle nach denselben Regeln spielen. Wer oben stehen will, muss jeden Turm genau setzen.",
