@@ -8,7 +8,7 @@
   "description": "talfahrt – software engineering from the Wuppertal area, Germany: software that feels light. Apps, backends, cloud, integration and modernising legacy applications.",
   "skip": "Skip to content",
   "nav": {
-    "projects": "Projects",
+    "projects": "Apps",
     "services": "Services",
     "profile": "About",
     "contact": "Contact",
@@ -18,11 +18,11 @@
   },
   "hero": {
     "claim": "Software engineering from the Wuppertal area, Germany",
-    "primary": "See projects",
+    "primary": "See apps",
     "secondary": "Get in touch"
   },
   "projects": {
-    "title": "Projects",
+    "title": "Apps",
     "intro": "Apps made at talfahrt, live now. Try them, play them, pass them on.",
     "open": "Open {name}",
     "cta": "Open",
@@ -30,22 +30,22 @@
       "gruppetto": {
         "tagline": "The app for Grand Tour fans",
         "description": "The key news, every stage with profile and classifications, a prediction league with friends and mini games in between – all in one app.",
-        "platforms": "iPhone, Android and browser"
+        "platforms": "iOS, Android and desktop"
       },
       "fitcheck": {
         "tagline": "Your wardrobe as a sticker album",
         "description": "Snap your clothes – Fitcheck cuts them out and sorts them by type, colour and style. See a look you like in a screenshot or on Pinterest, and the app rebuilds it from your own wardrobe.",
-        "platforms": "iPhone and browser"
+        "platforms": "iOS, Android and desktop"
       },
       "neontd": {
         "tagline": "Tower defense that glows",
         "description": "Eight worlds, 48 tracks and a new arena every week where everyone plays by the same rules. If you want the top spot, every tower has to count.",
-        "platforms": "iPhone, browser and desktop"
+        "platforms": "iOS, Android and desktop"
       },
       "sattelfest": {
         "tagline": "Docking down to the centimetre",
         "description": "One articulated lorry, one tight loading bay, and every centimetre counts. Sattelfest is a truck parking simulator seen from above: reverse up to the dock, line it up cleanly, no scratches, against the clock.",
-        "platforms": "iPhone and browser"
+        "platforms": "iOS, Android and desktop"
       }
     },
     "show": "Show {name}",
@@ -145,7 +145,7 @@
     "hint": "Open with ⌘K or /",
     "groups": {
       "pages": "Page",
-      "projects": "Projects",
+      "projects": "Apps",
       "actions": "Actions"
     },
     "items": {

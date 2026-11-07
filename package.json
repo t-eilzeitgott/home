@@ -1,7 +1,7 @@
 {
   "name": "home",
   "private": true,
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "talfahrt.dev – Jerome Ceric",
   "type": "module",
   "scripts": {

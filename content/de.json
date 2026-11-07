@@ -8,7 +8,7 @@
   "description": "talfahrt – Softwareentwicklung aus dem Bergischen Land: Softwarelösungen, die sich leicht anfühlen. Apps, Backends, Cloud, Integration und die Modernisierung von Legacy-Anwendungen.",
   "skip": "Zum Inhalt",
   "nav": {
-    "projects": "Projekte",
+    "projects": "Apps",
     "services": "Leistungen",
     "profile": "Über",
     "contact": "Kontakt",
@@ -18,11 +18,11 @@
   },
   "hero": {
     "claim": "Software Engineering aus dem Bergischen Land",
-    "primary": "Projekte ansehen",
+    "primary": "Apps ansehen",
     "secondary": "Schreib uns"
   },
   "projects": {
-    "title": "Projekte",
+    "title": "Apps",
     "intro": "Eigene Apps, live unter talfahrt.dev. Zum Ausprobieren, Mitspielen und Weitersagen.",
     "open": "{name} öffnen",
     "cta": "Öffnen",
@@ -30,22 +30,22 @@
       "gruppetto": {
         "tagline": "Die App für Grand‑Tour‑Fans",
         "description": "Die wichtigsten News, jede Etappe mit Profil und Wertungen, eine Tipprunde mit Freunden und Minispiele für zwischendurch – alles in einer App.",
-        "platforms": "iPhone, Android und Browser"
+        "platforms": "iOS, Android und Desktop"
       },
       "fitcheck": {
         "tagline": "Der Kleiderschrank als Stickeralbum",
         "description": "Teile fotografieren – Fitcheck stellt sie frei und sortiert sie nach Art, Farbe und Stil. Gefällt dir ein Look aus Screenshot oder Pinterest, baut die App ihn aus deinem eigenen Schrank nach.",
-        "platforms": "iPhone und Browser"
+        "platforms": "iOS, Android und Desktop"
       },
       "neontd": {
         "tagline": "Tower Defense, das leuchtet",
         "description": "Acht Welten, 48 Strecken und jede Woche eine neue Arena, in der alle nach denselben Regeln spielen. Wer oben stehen will, muss jeden Turm genau setzen.",
-        "platforms": "iPhone, Browser und Desktop"
+        "platforms": "iOS, Android und Desktop"
       },
       "sattelfest": {
         "tagline": "Rangieren auf den Zentimeter",
         "description": "Ein Sattelzug, eine enge Rampe und jeder Zentimeter zählt. Sattelfest ist ein LKW-Einparksimulator aus der Vogelperspektive: rückwärts andocken, sauber in die Bucht, ohne Kratzer und gegen die Uhr.",
-        "platforms": "iPhone und Browser"
+        "platforms": "iOS, Android und Desktop"
       }
     },
     "show": "{name} zeigen",
@@ -145,7 +145,7 @@
     "hint": "Öffnen mit ⌘K oder /",
     "groups": {
       "pages": "Seite",
-      "projects": "Projekte",
+      "projects": "Apps",
       "actions": "Aktionen"
     },
     "items": {
