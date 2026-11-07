@@ -317,13 +317,6 @@ html.no-intro .hero__body { animation: none; }
   letter-spacing: -.03em;
   line-height: 1.25;
 }
-.hero__lede {
-  margin-top: 14px;
-  font-size: clamp(17px, 1.5vw, 20px);
-  line-height: 1.5;
-  color: var(--text);
-  max-width: 56ch;
-}
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 .btn {

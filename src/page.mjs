@@ -175,7 +175,6 @@ function hero(ctx) {
 <p class="hero__mark wordmark mark" id="heroMark" aria-label="talfahrt"><span class="mark__l1" aria-hidden="true">tal<i>\\</i></span><span class="mark__l2" aria-hidden="true">fahrt<i class="mark__cur">_</i></span></p>
 <div class="hero__body">
 <h1 class="hero__claim">${esc(t.hero.claim)}</h1>
-<p class="hero__lede">${esc(t.hero.lede)}</p>
 <div class="hero__cta">
 <a class="btn btn--primary" href="#projects">${esc(t.hero.primary)}</a>
 <a class="btn" href="#contact">${esc(t.hero.secondary)}</a>
