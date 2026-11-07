@@ -245,19 +245,12 @@ ${items}
 
 function profile(ctx) {
   const { t } = ctx;
-  const groups = t.profile.groups.map((g) => `<div class="skills__group">
-<h3 class="skills__label">${esc(g.label)}</h3>
-<ul class="skills__list">${g.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
-</div>`).join('\n');
   return `<section class="section profile" id="profile" aria-labelledby="profile-title">
 <div class="wrap">
 <div class="section__head">
 <h2 class="section__title" id="profile-title">${esc(t.profile.title)}</h2>
 </div>
 <p class="profile__intro">${esc(t.profile.intro)}</p>
-<div class="skills">
-${groups}
-</div>
 </div>
 </section>`;
 }
