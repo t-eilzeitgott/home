@@ -52,8 +52,9 @@ Repository settings → Pages: source "GitHub Actions", custom domain `talfahrt.
 | CNAME | `rosenherz`| `t-eilzeitgott.github.io`        |
 | CNAME | `td`       | `t-eilzeitgott.github.io`        |
 | CNAME | `sattelfest` | `t-eilzeitgott.github.io`      |
+| CNAME | `fitcheck` | `t-eilzeitgott.github.io`       |
 
-`gruppetto` already points the same way. Each app repository gets its own custom domain in its Pages settings: `rosenherz.talfahrt.dev` for `lea-1`, `td.talfahrt.dev` for `td-0`, `sattelfest.talfahrt.dev` for `sattelfest`. GitHub adds the `CNAME` file to branch-based deployments itself.
+`gruppetto` already points the same way. Each app repository gets its own custom domain in its Pages settings: `rosenherz.talfahrt.dev` for `lea-1`, `td.talfahrt.dev` for `td-0`, `sattelfest.talfahrt.dev` for `sattelfest`, `fitcheck.talfahrt.dev` for `fitcheck`. GitHub adds the `CNAME` file to branch-based deployments itself.
 
 ## Search and AI discovery
 

@@ -69,8 +69,8 @@
     {
       "id": "fitcheck",
       "name": "Fitcheck",
-      "host": "t-eilzeitgott.github.io/fitcheck",
-      "url": "https://t-eilzeitgott.github.io/fitcheck/",
+      "host": "fitcheck.talfahrt.dev",
+      "url": "https://fitcheck.talfahrt.dev/",
       "icon": "projects/fitcheck.webp",
       "category": "LifestyleApplication",
       "os": "iOS, Web",
