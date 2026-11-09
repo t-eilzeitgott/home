@@ -13,11 +13,6 @@
   "email": "hallo@talfahrt.dev",
   "links": [
     {
-      "id": "linkedin",
-      "label": "LinkedIn",
-      "url": "https://de.linkedin.com/in/jerome-ceric-03757b20a"
-    },
-    {
       "id": "instagram",
       "label": "Instagram",
       "url": "https://www.instagram.com/talfahrt.dev/",
