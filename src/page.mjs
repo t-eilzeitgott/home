@@ -38,6 +38,7 @@ function structuredData(ctx, page) {
       '@id': website,
       url: `${origin}/`,
       name: site.brand,
+      alternateName: site.alternateName,
       inLanguage: ['de', 'en'],
       publisher: { '@id': org }
     },
@@ -55,6 +56,7 @@ function structuredData(ctx, page) {
       '@type': 'Organization',
       '@id': org,
       name: site.brand,
+      alternateName: site.alternateName,
       url: `${origin}/`,
       logo: `${origin}/icons/icon-512.png`,
       description: t.profile.intro,
@@ -92,6 +94,8 @@ function head(ctx, page) {
 <link rel="alternate" hreflang="en" href="${origin}/en/">
 <link rel="alternate" hreflang="x-default" href="${origin}/">`
     : '';
+  const verify = [['google-site-verification', site.verification?.google], ['msvalidate.01', site.verification?.bing]]
+    .filter(([, v]) => v).map(([n, v]) => `<meta name="${n}" content="${esc(v)}">`).join('\n');
   const me = site.links.filter((l) => l.url).map((l) => `<link rel="me" href="${esc(l.url)}">`).join('\n');
   return `<!doctype html>
 <html lang="${page.lang}" data-theme="dark" data-page="${page.kind}" data-root="${root}" data-field="${root}${ctx.scripts.field}" data-scenes="${root}${ctx.scripts.scenes}">
@@ -105,6 +109,7 @@ function head(ctx, page) {
 <meta name="theme-color" content="#000000">
 <meta name="color-scheme" content="dark light">
 <link rel="canonical" href="${page.url}">
+${verify}
 ${hreflang}
 ${me}
 <meta property="og:type" content="website">
@@ -168,13 +173,13 @@ function intro() {
 }
 
 function hero(ctx) {
-  const { t } = ctx;
+  const { site, t } = ctx;
   return `<section class="hero" id="hero">
 <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
 <div class="wrap hero__inner">
 <p class="hero__mark wordmark mark" id="heroMark" aria-label="talfahrt"><span class="mark__l1" aria-hidden="true">tal<i>\\</i></span><span class="mark__l2" aria-hidden="true">fahrt<i class="mark__cur">_</i></span></p>
 <div class="hero__body">
-<h1 class="hero__claim">${esc(t.hero.claim)}</h1>
+<h1 class="hero__claim"><span class="vh">${esc(site.brand)}: </span>${esc(t.hero.claim)}</h1>
 <div class="hero__cta">
 <a class="btn btn--primary" href="#projects">${esc(t.hero.primary)}</a>
 <a class="btn" href="#contact">${esc(t.hero.secondary)}</a>
@@ -257,7 +262,7 @@ function profile(ctx) {
 
 function contact(ctx) {
   const { site, t } = ctx;
-  const links = site.links.filter((l) => l.url);
+  const links = site.links.filter((l) => l.url && l.contact !== false);
   const linkRow = links.length
     ? `<div class="contact__links">${links.map((l) => `<a href="${esc(l.url)}" rel="me noopener">${esc(l.label)}</a>`).join('')}</div>`
     : '';

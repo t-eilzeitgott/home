@@ -71,7 +71,8 @@ function build() {
 function sitemap(site) {
   const o = site.origin;
   const alt = `<xhtml:link rel="alternate" hreflang="de" href="${o}/"/><xhtml:link rel="alternate" hreflang="en" href="${o}/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="${o}/"/>`;
-  const url = (loc, extra = '') => `<url><loc>${loc}</loc>${extra}</url>`;
+  const lastmod = `<lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>`;
+  const url = (loc, extra = '') => `<url><loc>${loc}</loc>${lastmod}${extra}</url>`;
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${url(`${o}/`, alt)}

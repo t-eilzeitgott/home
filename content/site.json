@@ -1,6 +1,10 @@
 {
   "origin": "https://talfahrt.dev",
   "brand": "talfahrt",
+  "alternateName": [
+    "talfahrt.dev",
+    "tal\\fahrt"
+  ],
   "location": {
     "locality": "Wuppertal",
     "region": "Nordrhein-Westfalen",
@@ -12,8 +16,36 @@
       "id": "linkedin",
       "label": "LinkedIn",
       "url": "https://de.linkedin.com/in/jerome-ceric-03757b20a"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/talfahrt.dev/",
+      "contact": false
+    },
+    {
+      "id": "tiktok",
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@talfahrt.dev",
+      "contact": false
+    },
+    {
+      "id": "youtube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@talfahrt-dev",
+      "contact": false
+    },
+    {
+      "id": "kofi",
+      "label": "Ko-fi",
+      "url": "https://ko-fi.com/talfahrt",
+      "contact": false
     }
   ],
+  "verification": {
+    "google": "",
+    "bing": ""
+  },
   "skills": [
     "Java",
     "Spring Boot",
