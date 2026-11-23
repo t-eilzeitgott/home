@@ -137,7 +137,9 @@
   "footer": {
     "imprint": "Impressum",
     "privacy": "Datenschutz",
-    "rights": "Alle Rechte vorbehalten."
+    "rights": "Alle Rechte vorbehalten.",
+    "social": "Kanäle",
+    "follow": "talfahrt auf {name}"
   },
   "palette": {
     "placeholder": "Wohin?",
@@ -146,7 +148,8 @@
     "groups": {
       "pages": "Seite",
       "projects": "Apps",
-      "actions": "Aktionen"
+      "actions": "Aktionen",
+      "social": "Kanäle"
     },
     "items": {
       "top": "Nach oben",

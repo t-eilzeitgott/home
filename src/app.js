@@ -117,6 +117,7 @@
       close();
       if (action === 'goto') scrollTo(target);
       else if (action === 'open' || action === 'mail') location.href = target;
+      else if (action === 'ext') window.open(target, '_blank', 'noopener');
       else if (action === 'lang') {
         store.set('talfahrt.lang', /en\/?$/.test(target) ? 'en' : 'de');
         location.href = target;

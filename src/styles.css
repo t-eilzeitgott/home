@@ -837,7 +837,21 @@ html.no-intro .hero__body { animation: none; }
   gap: 10px 28px;
   align-items: center;
 }
-.foot__meta { margin-right: auto; }
+.foot__brand { margin-right: auto; display: flex; align-items: center; gap: 18px; }
+.foot__social { display: flex; align-items: center; gap: 2px; padding-left: 18px; border-left: 1px solid var(--line); }
+.foot__social a {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: -6px 0;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  transition: color .2s ease, background-color .2s ease, transform .3s var(--spring);
+}
+.foot__social svg { width: 17px; height: 17px; }
+.foot__social a:hover { color: var(--text); background: var(--surface2); transform: translateY(-1px); }
+.foot__social a:focus-visible { color: var(--text); }
 .foot__links { display: flex; flex-wrap: wrap; gap: 4px 18px; }
 .foot__links a, .foot__links button {
   padding: 4px 0;

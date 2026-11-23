@@ -137,7 +137,9 @@
   "footer": {
     "imprint": "Imprint",
     "privacy": "Privacy",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "social": "Channels",
+    "follow": "talfahrt on {name}"
   },
   "palette": {
     "placeholder": "Where to?",
@@ -146,7 +148,8 @@
     "groups": {
       "pages": "Page",
       "projects": "Apps",
-      "actions": "Actions"
+      "actions": "Actions",
+      "social": "Channels"
     },
     "items": {
       "top": "Back to top",
