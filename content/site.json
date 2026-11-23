@@ -16,19 +16,25 @@
       "id": "instagram",
       "label": "Instagram",
       "url": "https://www.instagram.com/talfahrt.dev/",
-      "contact": false
+      "contact": false,
+      "handle": "@talfahrt.dev",
+      "social": true
     },
     {
       "id": "tiktok",
       "label": "TikTok",
       "url": "https://www.tiktok.com/@talfahrt.dev",
-      "contact": false
+      "contact": false,
+      "handle": "@talfahrt.dev",
+      "social": true
     },
     {
       "id": "youtube",
       "label": "YouTube",
       "url": "https://www.youtube.com/@talfahrt-dev",
-      "contact": false
+      "contact": false,
+      "handle": "@talfahrt-dev",
+      "social": true
     },
     {
       "id": "kofi",

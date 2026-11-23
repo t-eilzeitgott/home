@@ -11,10 +11,17 @@ const GLYPHS = {
   theme: '<circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor" stroke="none"/>',
   copy: '<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>',
   mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
-  doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>'
+  doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  instagram: '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.1" cy="6.9" r=".9" fill="currentColor" stroke="none"/>',
+  tiktok: '<path d="M13.5 3.5v11.25a3.75 3.75 0 1 1-3.75-3.75"/><path d="M13.5 3.5c.3 2.6 2.3 4.6 5 4.8"/>',
+  youtube: '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10.25 9.25 4.5 2.75-4.5 2.75z" fill="currentColor"/>'
 };
 
-const glyph = (name) => `<span class="pal__glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[name]}</svg></span>`;
+const svgGlyph = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${GLYPHS[name]}</svg>`;
+
+const glyph = (name) => `<span class="pal__glyph" aria-hidden="true">${svgGlyph(name)}</span>`;
+
+const socials = (site) => site.links.filter((l) => l.url && l.social && GLYPHS[l.id]);
 
 function icon(ctx, project, size) {
   if (project.icon.endsWith('.svg')) return ctx.icons[project.id];
@@ -283,9 +290,13 @@ ${linkRow}
 function footer(ctx) {
   const { site, t, root, year } = ctx;
   const otherHref = `${root}${t.otherPath}`;
+  const channels = socials(site).map((l) => `<a href="${esc(l.url)}" rel="me noopener" target="_blank" aria-label="${esc(t.footer.follow.replace('{name}', l.label))}" title="${esc(`${l.label} ${l.handle || ''}`.trim())}">${svgGlyph(l.id)}</a>`).join('');
   return `<footer class="foot">
 <div class="wrap">
+<div class="foot__brand">
 <p class="foot__meta">© ${year} ${esc(site.brand)}</p>
+${channels ? `<nav class="foot__social" aria-label="${esc(t.footer.social)}">${channels}</nav>` : ''}
+</div>
 <div class="foot__links">
 <a href="${root}impressum/">${esc(t.footer.imprint)}</a>
 <a href="${root}impressum/#datenschutz">${esc(t.footer.privacy)}</a>
@@ -317,6 +328,7 @@ function palette(ctx) {
     item('mail', `mailto:${site.email}`, p.items.mail, glyph('mail')),
     item('open', `${root}impressum/`, p.items.imprint, glyph('doc'))
   ].join('\n');
+  const channels = socials(site).map((l) => item('ext', l.url, l.label, glyph(l.id), l.handle, `${l.label} ${l.handle || ''} social`)).join('\n');
   return `<dialog class="pal" id="palette" aria-label="${esc(t.nav.palette)}">
 <input class="pal__input" id="pal-input" type="text" placeholder="${esc(p.placeholder)}" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="pal-list" aria-autocomplete="list" aria-label="${esc(t.nav.palette)}">
 <ul class="pal__list" id="pal-list" role="listbox" aria-label="${esc(t.nav.palette)}">
@@ -326,6 +338,8 @@ ${pages}
 ${apps}
 <li class="pal__group" role="presentation">${esc(p.groups.actions)}</li>
 ${actions}
+${channels ? `<li class="pal__group" role="presentation">${esc(p.groups.social)}</li>
+${channels}` : ''}
 </ul>
 <p class="pal__empty" hidden>${esc(p.empty)}</p>
 <div class="pal__foot">${esc(p.hint)}</div>
