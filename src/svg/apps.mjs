@@ -30,6 +30,14 @@ export function screenshot(origin, id) {
   return `${origin}/projects/shots/${SHOTS[id].front}.webp`;
 }
 
+export function appLanguages(t, pr) {
+  return new Intl.ListFormat(t.lang === 'de' ? 'de' : 'en-GB', { type: 'conjunction' }).format(pr.languages.map((l) => t.projects.languages[l]));
+}
+
+export function appHref(t, pr) {
+  return `${pr.url}?lang=${t.lang}`;
+}
+
 export function appsCarousel(ctx, icons) {
   const { site, t, root } = ctx;
   const p = t.projects;
@@ -38,15 +46,15 @@ export function appsCarousel(ctx, icons) {
     const s = p.items[pr.id];
     const label = p.position.replace('{n}', i + 1).replace('{total}', total).replace('{name}', pr.name);
     return `<article class="app app--${pr.id}" aria-roledescription="slide" aria-label="${esc(label)}">
-<a class="app__stage" href="${pr.url}" tabindex="-1" aria-hidden="true"><span class="app__scene">${scene(root, pr.id)}</span></a>
+<a class="app__stage" href="${appHref(t, pr)}" tabindex="-1" aria-hidden="true"><span class="app__scene">${scene(root, pr.id)}</span></a>
 <div class="app__info">
 <div class="app__head">
 <span class="app__icon">${icons[pr.id]}</span>
 <div class="app__title"><h3 class="app__name">${esc(pr.name)}</h3><p class="app__tag">${esc(s.tagline)}</p></div>
-<a class="app__open" href="${pr.url}" aria-label="${esc(p.open.replace('{name}', pr.name))}">${esc(p.cta)}</a>
+<a class="app__open" href="${appHref(t, pr)}" hreflang="${t.lang}" aria-label="${esc(p.open.replace('{name}', pr.name))}">${esc(p.cta)}</a>
 </div>
 <p class="app__desc">${esc(s.description)}</p>
-<p class="app__meta"><span>${esc(s.platforms)}</span><span class="host">${esc(pr.host)}</span></p>
+<p class="app__meta"><span>${esc(s.platforms)}</span><span>${esc(appLanguages(t, pr))}</span><span class="host">${esc(pr.host)}</span></p>
 </div>
 </article>`;
   }).join('\n');

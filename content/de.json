@@ -48,6 +48,11 @@
         "platforms": "iOS, Android und Desktop"
       }
     },
+    "languages": {
+      "de": "Deutsch",
+      "en": "Englisch",
+      "nl": "Niederländisch"
+    },
     "show": "{name} zeigen",
     "previous": "Vorherige App",
     "next": "Nächste App",

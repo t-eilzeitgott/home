@@ -97,6 +97,10 @@
       "icon": "projects/gruppetto.svg",
       "category": "GameApplication",
       "os": "iOS, Android, Web",
+      "languages": [
+        "de",
+        "en"
+      ],
       "since": "2026"
     },
     {
@@ -107,6 +111,10 @@
       "icon": "projects/fitcheck.webp",
       "category": "LifestyleApplication",
       "os": "iOS, Web",
+      "languages": [
+        "de",
+        "en"
+      ],
       "since": "2026"
     },
     {
@@ -117,6 +125,10 @@
       "icon": "projects/neontd.webp",
       "category": "GameApplication",
       "os": "iOS, Android, Web, Windows, macOS, Linux",
+      "languages": [
+        "de",
+        "en"
+      ],
       "since": "2026"
     },
     {
@@ -127,6 +139,11 @@
       "icon": "projects/sattelfest.webp",
       "category": "GameApplication",
       "os": "iOS, Web",
+      "languages": [
+        "de",
+        "en",
+        "nl"
+      ],
       "since": "2026"
     }
   ],

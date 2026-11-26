@@ -48,6 +48,11 @@
         "platforms": "iOS, Android and desktop"
       }
     },
+    "languages": {
+      "de": "German",
+      "en": "English",
+      "nl": "Dutch"
+    },
     "show": "Show {name}",
     "previous": "Previous app",
     "next": "Next app",

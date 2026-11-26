@@ -86,7 +86,8 @@ function llms(site, en, de) {
   const o = site.origin;
   const projects = site.projects.map((p) => {
     const s = en.projects.items[p.id];
-    return `- [${p.name}](${p.url}): ${s.tagline}. ${s.description} Runs on ${s.platforms}.`;
+    const langs = new Intl.ListFormat('en-GB', { type: 'conjunction' }).format(p.languages.map((l) => en.projects.languages[l]));
+    return `- [${p.name}](${p.url}): ${s.tagline}. ${s.description} Runs on ${s.platforms}, in ${langs}.`;
   }).join('\n');
   const services = en.services.items.map((s) => `- ${s.title}: ${s.text}`).join('\n');
   const architectures = en.architectures.items.map((a) => `- ${a.title}: ${a.text}`).join('\n');

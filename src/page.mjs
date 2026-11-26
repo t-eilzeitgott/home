@@ -1,5 +1,5 @@
 import { SCENES, defs } from './scenes.mjs';
-import { appsCarousel, screenshot } from './svg/apps.mjs';
+import { appHref, appsCarousel, screenshot } from './svg/apps.mjs';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonForHtml = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
@@ -84,6 +84,7 @@ function structuredData(ctx, page) {
       url: p.url,
       applicationCategory: p.category,
       operatingSystem: p.os,
+      inLanguage: p.languages,
       description: t.projects.items[p.id].description,
       screenshot: screenshot(origin, p.id),
       author: { '@id': org },
@@ -320,7 +321,7 @@ function palette(ctx) {
     item('goto', '#contact', t.nav.contact, glyph('hash')),
     item('goto', '#top', p.items.top, glyph('up'))
   ].join('\n');
-  const apps = site.projects.map((pr) => item('open', pr.url, pr.name, `<span class="pal__icon" aria-hidden="true">${icon(ctx, pr, 28)}</span>`, pr.host, `${pr.name} ${t.projects.items[pr.id].tagline.replace(/\u2011/g, '-')}`)).join('\n');
+  const apps = site.projects.map((pr) => item('open', appHref(t, pr), pr.name, `<span class="pal__icon" aria-hidden="true">${icon(ctx, pr, 28)}</span>`, pr.host, `${pr.name} ${t.projects.items[pr.id].tagline.replace(/\u2011/g, '-')}`)).join('\n');
   const actions = [
     item('lang', otherHref, p.items.lang, glyph('globe'), null, `${p.items.lang} ${t.otherLabel}`),
     item('theme', '', p.items.theme, glyph('theme')),
